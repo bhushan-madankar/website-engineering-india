@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./ImageSlider.css";
 
 const images = [
-  "/Images/image.png",
+  "/Images/aboutpage.avif",
   "/Images/image2.png",
   "/Images/image3.png",
 ];
@@ -15,7 +15,7 @@ const ImageSlider = () => {
       setCurrentIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
-    }, 4000); // 3 seconds
+    }, 2000); // 2 seconds
 
     return () => clearInterval(timer);
   }, []);

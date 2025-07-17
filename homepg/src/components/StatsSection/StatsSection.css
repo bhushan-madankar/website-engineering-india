@@ -7,18 +7,17 @@
   background:rgba(173, 216, 230, 0.35);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  
 }
-
 .card {
   background:  white;
   padding: 30px 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
   text-align: center;
   flex: 1 1 200px;
   max-width: 250px;
   transition: transform 0.3s ease;
+  border-color: black;
 }
 
 .card:hover {
@@ -32,16 +31,16 @@
 
 .stat-value {
   font-size: 2rem;
-  font-weight: bold;
-  color: #4b0082;
+  color: #040007;
 }
 
 .stat-label {
   font-size: 1.5rem;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  color: #555;
+  font-family: "Outfit", sans-serif;
+  color:black;
   margin-top: 5px;
 }
+
 
 
 
