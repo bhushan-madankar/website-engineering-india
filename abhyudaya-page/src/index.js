@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-// Import the built Tailwind CSS file instead of the raw index.css
-import './tailwind.output.css';
+import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
