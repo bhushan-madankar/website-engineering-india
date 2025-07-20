@@ -23,10 +23,17 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div
-            className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent cursor-pointer"
+            className="flex items-center gap-3 cursor-pointer group"
             onClick={() => setCurrentPage("home")}
           >
-            Engineering India
+            <img
+              src="/engineering-india-logo.svg"
+              alt="Engineering India Logo"
+              className="h-10 w-auto group-hover:scale-110 transition-transform duration-300"
+            />
+            <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent group-hover:from-purple-400 group-hover:to-pink-400 transition-all duration-300">
+              Engineering India
+            </span>
           </div>
 
           {/* Desktop Menu */}

@@ -1,0 +1,16 @@
+<svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- ENGINEERING text -->
+  <text x="600" y="120" text-anchor="middle" fill="#4C1D95" font-family="Arial Black, sans-serif" font-size="140" font-weight="900" letter-spacing="8px">ENGINEERING</text>
+  
+  <!-- IN section (Orange background) -->
+  <rect x="270" y="190" width="180" height="180" fill="#EA580C" stroke="#000" stroke-width="4"/>
+  <text x="360" y="320" text-anchor="middle" fill="white" font-family="Arial Black, sans-serif" font-size="120" font-weight="900">IN</text>
+  
+  <!-- D section (Purple background) -->
+  <rect x="450" y="190" width="120" height="180" fill="#7C3AED" stroke="#000" stroke-width="4"/>
+  <text x="510" y="320" text-anchor="middle" fill="white" font-family="Arial Black, sans-serif" font-size="120" font-weight="900">D</text>
+  
+  <!-- IA section (Green background) -->
+  <rect x="570" y="190" width="180" height="180" fill="#16A34A" stroke="#000" stroke-width="4"/>
+  <text x="660" y="320" text-anchor="middle" fill="white" font-family="Arial Black, sans-serif" font-size="120" font-weight="900">IA</text>
+</svg>
