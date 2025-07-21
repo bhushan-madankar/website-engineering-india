@@ -65,29 +65,7 @@
 .btn:active {
   opacity: 0.5;
 }
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    height: auto;
-  }
 
-  .hero-left{
-    margin-top: 30px;
-  }
-  .hero-left, .hero-right {
-    flex: unset;
-    width: 100%;
-    padding: 2rem 1rem;
-  }
-
-  .hero-left h1 {
-    font-size: 2.5rem;
-  }
-
-  .hero-left p {
-    font-size: 1.25rem;
-  }
-}
 .logo-title {
   display: flex;
   flex-direction: column;
@@ -157,5 +135,55 @@
   color: #16a34a; /* deep green */
   font-weight: bold;
 }
+@media screen and (max-width: 780px) {
+  .hero {
+    flex-direction: column-reverse; /* This moves the image slider below the text */
+    height: auto;
+    padding: 20px 10px;
+    text-align: center;
+  }
+
+  .hero-left {
+    padding: 10px 0;
+  }
+
+  .hero-left h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-left p {
+    font-size: 1.2rem;
+    padding: 0 10px;
+  }
+
+  .hero-right {
+    width: 100%;
+    margin: 20px 0 0 0;
+  }
+
+  .btn {
+    width: 130px;
+    height: 36px;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+
+  .engineering {
+    font-size: 2.4rem;
+  }
+
+  .letter {
+    font-size: 2rem;
+    padding: 2px 8px;
+  }
+
+  .tagline {
+    font-size: 1.2rem;
+    padding: 0 10px;
+  }
+}
+
+
+
 
 
