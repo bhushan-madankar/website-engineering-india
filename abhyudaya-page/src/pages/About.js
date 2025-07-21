@@ -16,7 +16,9 @@ const StatCard = ({ number, label, icon }) => (
 const FeatureCard = ({ title, description, icon, gradient }) => (
   <div className="group relative">
     <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 hover:border-purple-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20">
-      <div className={`text-5xl mb-6 bg-gradient-to-r ${gradient} bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300`}>
+      <div
+        className={`text-5xl mb-6 bg-gradient-to-r ${gradient} bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300`}
+      >
         {icon}
       </div>
       <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-purple-400 transition-colors">
@@ -40,7 +42,9 @@ const TeamMember = ({ name, role, image, description }) => (
       {name}
     </h3>
     <p className="text-purple-400 text-center font-medium mb-3">{role}</p>
-    <p className="text-gray-400 text-sm text-center leading-relaxed">{description}</p>
+    <p className="text-gray-400 text-sm text-center leading-relaxed">
+      {description}
+    </p>
   </div>
 );
 
@@ -49,16 +53,15 @@ const About = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
       {/* 3D Background */}
       <Hero3D />
-      
+
       {/* Content */}
       <div className="relative z-10 pt-20">
-        
         {/* Hero Section */}
         <section className="max-w-7xl mx-auto px-6 py-20 text-center">
           <div className="mb-12">
-            <img 
-              src="/engineering-india-logo.svg" 
-              alt="Engineering India Logo" 
+            <img
+              src="/engineering-india-logo.svg"
+              alt="Engineering India Logo"
               className="h-20 md:h-24 w-auto mx-auto mb-8 hover:scale-110 transition-transform duration-500 filter drop-shadow-2xl"
             />
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
@@ -67,17 +70,23 @@ const About = () => {
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Engineering India is a vibrant student-driven social community that bridges the gap between academic excellence and real-world impact across the nation.
+              Engineering India is a vibrant student-driven social community
+              that bridges the gap between academic excellence and real-world
+              impact across the nation.
             </p>
           </div>
-          
+
           {/* Mission Statement */}
           <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-8 md:p-12 border border-white/10 max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-orange-400 via-white to-green-400 bg-clip-text text-transparent">
               "Think Nationally, Act Locally"
             </h2>
             <p className="text-lg text-gray-300 leading-relaxed">
-              Our mission embodies the spirit of unity in diversity that defines India. We believe in fostering national-level thinking while empowering local action, creating a network of engineering students who are passionate about innovation, social impact, and community development.
+              Our mission embodies the spirit of unity in diversity that defines
+              India. We believe in fostering national-level thinking while
+              empowering local action, creating a network of engineering
+              students who are passionate about innovation, social impact, and
+              community development.
             </p>
           </div>
         </section>
@@ -148,7 +157,10 @@ const About = () => {
                 Our Vision
               </h3>
               <p className="text-gray-300 leading-relaxed text-lg">
-                To become India's largest and most impactful engineering student community, where every member is empowered to contribute to national development while making meaningful changes in their local communities.
+                To become India's largest and most impactful engineering student
+                community, where every member is empowered to contribute to
+                national development while making meaningful changes in their
+                local communities.
               </p>
             </div>
             <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10">
@@ -227,7 +239,9 @@ const About = () => {
               Ready to Make an Impact?
             </h2>
             <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-              Join thousands of engineering students across India who are already making a difference. Together, we can build a better future for our nation.
+              Join thousands of engineering students across India who are
+              already making a difference. Together, we can build a better
+              future for our nation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl">
