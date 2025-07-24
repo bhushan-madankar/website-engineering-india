@@ -4,6 +4,7 @@ const images = [
   "/aboutpage.avif",
   "/image2.png",
   "/image3.png",
+  "/RASHTRABHIMAN.avif",
 ];
 
 const ImageSlider = () => {
