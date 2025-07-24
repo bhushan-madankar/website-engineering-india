@@ -9,14 +9,14 @@ const stats = [
 
 const StatsSection = () => {
   return (
-    <section className="flex justify-around flex-wrap gap-2 py-10 px-5 bg-[rgba(173,216,230,0.35)] backdrop-blur-md ">
+    <section className="flex justify-around flex-wrap gap-[0.8rem] py-10 px-5 bg-[rgba(173,216,230,0.35)] backdrop-blur-md ">
       {stats.map((stat, index) => (
         <div
           key={index}
-          className="bg-[#ffffff] py-10 px-5 rounded-[12px] shadow-[0_15px_30px_rgba(0,0,0,0.1)] text-center flex flex-col justify-center flex-1 max-w-[250px] h-[230px] transition-transform duration-300 ease-in-out hover:-translate-y-4 font-poppins">
-          <div className="text-[2.5rem] mb-[1,5rem] ">{stat.icon}</div>
-          <div className="text-[2rem] text-[#040007] font-[poppins] mb-[1rem] ">{stat.value}</div>
-          <div className="text-[1.5rem] text-black font-[poppins] font-bold">
+          className="bg-[#ffffff] mb-[2rem] py-10 px-5 rounded-[12px] shadow-[0_15px_30px_rgba(0,0,0,0.1)] text-center flex flex-col justify-center w-[280px] h-[230px] transform transition-transform duration-300 ease-in-out hover:-translate-y-4 font-poppins">
+          <div className="text-[2rem] mb-[1rem] ">{stat.icon}</div>
+          <div className="text-[1.8rem] text-[#040007] font-[poppins] mb-[0.5rem] ">{stat.value}</div>
+          <div className="text-[1.4rem] text-black font-[poppins] font-bold">
             {stat.label} 
           </div>
         </div>

@@ -20,8 +20,8 @@ const ImageSlider = () => {
   }, []);
 
   return (
-    <div className="flex justify-center items-center py-[50px] mt-[40px]">
-      <div className="relative w-[150vw] max-w-[800px] h-[550px] overflow-hidden rounded-[20px] shadow-[0_10px_40px_rgba(17,1,1,0.15)]">
+    <div className="flex justify-center items-center py-[50px] mt-[40px] mr-[2rem] ">
+      <div className="relative w-[180vw] max-w-[800px] h-[550px] overflow-hidden rounded-[20px] shadow-[0_10px_40px_rgba(17,1,1,0.15)]">
         {images.map((img, index) => (
           <img
             key={index}

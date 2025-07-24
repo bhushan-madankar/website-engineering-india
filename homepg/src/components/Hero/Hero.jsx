@@ -26,7 +26,7 @@ const Hero = () => {
       <button className="w-[160px] h-[40px] rounded-full bg-gradient-to-br from-[#faf5f3] to-[#d2f2fc] shadow-[0_20px_30px_-6px_rgba(238,103,97,0.5)] mt-6 text-black text-[1rem] font-medium flex items-center justify-center gap-2 transition-all duration-300 hover:translate-y-[3px] hover:shadow-none active:opacity-50">
         About Us <img src={arrow} alt="arrow" />
       </button>
-    </div>
+     </div>
 
     {/* Right Side: Image Slider */}
     <div className="w-full md:w-1/2 flex flex-row justify-center px-5 py-4 ">
