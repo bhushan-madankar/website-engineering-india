@@ -1,5 +1,8 @@
 import React from 'react';
 import { motion } from "framer-motion";
+
+
+
 import {
   CodeBracketIcon,
   AcademicCapIcon,
@@ -30,6 +33,13 @@ function App() {
         <h1 className="text-9xl md:text-10xl font-extrabold text-blue-800 mb-6 tracking-wide">
           ABHYUDAYA
         </h1>
+
+  <p className="text-2xl text-blue-700 font-semibold mt-6 text-center">
+  || यः करोत् मनोभानं न तस्य दूषितम् ||
+</p>
+
+
+<br></br>
 
         <div className="flex gap-4 mb-10">
           <button className="px-6 py-2 border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition rounded">
@@ -109,7 +119,7 @@ function App() {
 
 {/* Impact Section */}
 <section className="py-16 bg-white text-blue-700 text-center">
-  <h2 className="text-3xl font-bold mb-8">Impact at a Glance</h2>
+  <h2 className="text-3xl font-bold mb-8">IMPACT AT A GLANCE</h2>
   <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto text-4xl font-bold">
     <div>250+<p className="text-sm font-medium text-gray-600 mt-2">Coordinators</p></div>
     <div>10+<p className="text-sm font-medium text-gray-600 mt-2">Partner Colleges</p></div>
@@ -171,7 +181,7 @@ function App() {
   <h2 className="text-3xl font-bold text-blue-700 text-center mb-8">Abhyudaya in Action</h2>
   <div className="max-w-5xl mx-auto aspect-video overflow-hidden rounded-xl shadow-lg">
     <iframe
-      src="https://www.instagram.com/reel/DH6ANkwSr_E/embed"
+      src="https://www.instagram.com/reel/C_aXS96ChxL/?igsh=NW10ejI1ZTI3YmVn"
       title="Abhyudaya BTS"
       className="w-full h-full"
       allowFullScreen
@@ -179,45 +189,51 @@ function App() {
   </div>
 </section>
 
+            <section className="bg-white py-16 px-6 text-gray-800">
+  <h2 className="text-3xl font-bold text-blue-700 text-center mb-12">ABHYUDAYA GROWTH JOURNEY</h2>
+  <div className="relative max-w-4xl mx-auto">
+    <div className="absolute left-1/2 transform -translate-x-1/2 h-full border-l-4 border-blue-300"></div>
+{[
+  { year: "2011", participants: "100", coordinators: "20", desc: "Inception year with a small but passionate team." },
+  { year: "2015", participants: "400+", coordinators: "50+", desc: "Expanded across colleges with cultural and tech events." },
+  { year: "2020", participants: "900+", coordinators: "75+", desc: "Hybrid campaigns and digital outreach began." },
+  { year: "2023", participants: "1500+", coordinators: "100+", desc: "City-wide fest with record turnout and media buzz." },
+  { year: "2024", participants: "2500+", coordinators: "250+", desc: "Mega edition with 20+ events and 10+ colleges." },
+].map((item, index) => (
+  <motion.div
+    key={index}
+    initial={{ opacity: 0, x: index % 2 === 0 ? -60 : 60 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.7, delay: index * 0.2 }}
+    className="mb-10 flex flex-col md:flex-row items-center"
+  >
+    {index % 2 === 0 ? (
+      <>
+        <div className="w-full md:w-1/2 pr-8 text-right">
+          <h3 className="text-xl font-bold text-blue-700">{item.year}</h3>
+          <p className="text-gray-600">{item.desc}</p>
+          <p className="text-sm text-gray-500 mt-1">👥 {item.participants} | 🎓 {item.coordinators}</p>
+        </div>
+        <div className="w-6 h-6 bg-blue-500 rounded-full border-4 border-white z-10"></div>
+        <div className="hidden md:block w-full md:w-1/2"></div>
+      </>
+    ) : (
+      <>
+        <div className="hidden md:block w-full md:w-1/2"></div>
+        <div className="w-6 h-6 bg-blue-500 rounded-full border-4 border-white z-10"></div>
+        <div className="w-full md:w-1/2 pl-8 text-left">
+          <h3 className="text-xl font-bold text-blue-700">{item.year}</h3>
+          <p className="text-gray-600">{item.desc}</p>
+          <p className="text-sm text-gray-500 mt-1">👥 {item.participants} | 🎓 {item.coordinators}</p>
+        </div>
+      </>
+    )}
+  </motion.div>
+))}
 
-                 {/* Timeline Section */}
-              <section className="bg-white py-16 px-4 text-gray-800">
-                    <h2 className="text-3xl font-bold text-blue-600 text-center mb-12">Abhyudaya Timeline</h2>
-
-                 <div className="relative max-w-4xl mx-auto">
-
-
-                {/* Vertical line */}
-                   <div className="absolute left-1/2 transform -translate-x-1/2 h-full border-l-4 border-blue-300"></div>
-
-                 {/* Timeline Items */}
-                   {[
-                  { year: "2021", title: "Inception of Abhyudaya", desc: "The journey began with the aim to promote creativity and cultural expression." },
-                  { year: "2022", title: "First Intercollege Event", desc: "Successfully hosted events welcoming participants from multiple colleges." },
-                 { year: "2023", title: "Expanded to Tech + Cultural", desc: "Merged technical and cultural domains to widen participation." },
-                 { year: "2024", title: "Mega Fest with 1000+ attendees", desc: "Achieved record-breaking turnout and media coverage." },
-                   ].map((item, index) => (
-                   <motion.div
-                  key={index}
-                  className="mb-10 flex flex-col md:flex-row items-center"
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                >
-                  <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pr-8 text-right' : 'md:pl-8 text-left'}`}>
-                  <h3 className="text-xl font-semibold text-blue-700">{item.year} - {item.title}</h3>
-                  <p className="mt-2 text-gray-600">{item.desc}</p>
-                </div>
-                <div className="w-6 h-6 bg-blue-500 rounded-full border-4 border-white shadow-md z-10"></div>
-                <div className="hidden md:block w-full md:w-1/2"></div>
-              </motion.div>
-               ))}
-              </div>
+  </div>
+</section>
             </section>
-
-            </section>
-
-
            </section>
           </section>
          </div>
