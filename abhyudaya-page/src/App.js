@@ -34,6 +34,13 @@ function App() {
           ABHYUDAYA
         </h1>
 
+  <p className="text-2xl text-blue-700 font-semibold mt-6 text-center">
+  || यः करोत् मनोभानं न तस्य दूषितम् ||
+</p>
+
+
+<br></br>
+
         <div className="flex gap-4 mb-10">
           <button className="px-6 py-2 border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition rounded">
             VIEW HIGHLIGHTS
