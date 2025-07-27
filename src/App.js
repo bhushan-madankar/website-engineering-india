@@ -1,19 +1,18 @@
-// src/App.js
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/Home";
-import AbhyudayaPage from "./pages/Abhyudaya";
+// App.js
+
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import AbhyudayaPage from './pages/Abhyudaya'; // index.js gets auto-resolved
 
 function App() {
   return (
-    <div className="w-full">
-      <Router>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/abhyudaya" element={<AbhyudayaPage />} />
-        </Routes>
-      </Router>
-    </div>
+    <Router>
+      <Routes>
+        {/* Redirect root to /abhyudaya */}
+        <Route path="/" element={<Navigate to="/abhyudaya" />} />
+        <Route path="/abhyudaya" element={<AbhyudayaPage />} />
+      </Routes>
+    </Router>
   );
 }
 
