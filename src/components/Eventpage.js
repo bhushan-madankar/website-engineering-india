@@ -19,14 +19,12 @@ const EventsPage = () => {
       title: "Fun Trip - A Day to Unwind and Explore",
       description: "Our Club organized a memorable Fun Trip filled with laughter, bonding, and adventure. It was the perfect blend of relaxation and fun, strengthening camaraderie and team spirit.",
       image: '/images/chikhal.jpg'
-
     },
     {
       id: 4,
       title: "Shivoham - Honouring the Legacy of Chhatrapati Shivaji Maharaj ",
       description: "Students actively participated in narrating Shivaji Maharaj's journey, highlighting his unmatched contribution to Indian history.",
       image: '/images/Shivaji.jpg'
-
     },
     {
       id: 5,
@@ -36,14 +34,14 @@ const EventsPage = () => {
     },
     {
       id: 6,
-      title: "Research Symposium",
-      description: "Students and faculty present their research findings and innovative solutions to real-world engineering problems.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop"
+      title: "Excellon Software Visit - A Day of Learning and Inspiration",
+      description: "An inspiring industry visit to Excellon Software, Nagpur.Had the privilege to interact with Mr. Vinod Tambi, Co-founder of Excellon Software, and gain valuable insights into the tech world 🌟 A day filled with learning and inspiration!🚀📚.",
+      image: "./images/excellon.jpg"
     }
   ];
 
   return (
-    <div className="bg-white min-h-screen font-sans">
+    <div id="events" className="bg-white min-h-screen font-sans"> {/* Added ID here */}
       {/* Banner */}
       <div className="relative h-[50vh] w-full overflow-hidden">
         <img
@@ -93,14 +91,6 @@ const EventsPage = () => {
                   <p className="text-gray-600 text-sm leading-relaxed mb-4">
                     {event.description}
                   </p>
-
-                  {/* { Learn More Button}
-                  <button className="inline-flex items-center text-blue-600 font-semibold text-sm hover:text-blue-700 transition-colors">
-                    Learn more
-                    <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button> */}
                 </div>
               </div>
             ))}

@@ -81,7 +81,7 @@ const CollegesSection = () => {
       borderColor: "border-indigo-300",
       accentColor: "indigo",
       description: "Illuminating Engineering Excellence",
-      image: "https://images.unsplash.com/photo-1592280771190-3e2e4d571952?w=400&h=300&fit=crop&crop=center"
+      image: "./images/pce.jpg"
     }
   ];
 
@@ -236,7 +236,7 @@ const CollegesSection = () => {
                 <div className="w-16 h-1 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full"></div>
               </div>
               <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                A constellation of excellence in engineering education across India
+                A constellation of excellence across Nagpur
               </p>
             </div>
 
@@ -248,11 +248,9 @@ const CollegesSection = () => {
                     Our Mission
                   </h3>
                   <p className="text-gray-700 leading-relaxed text-lg mb-4">
-                    We unite the most brilliant minds from premier engineering institutions across Maharashtra and beyond, creating an unprecedented network of academic excellence and innovation.
+                    Our mission is to inspire students to bring positive change in society by turning their technical knowledge into action. We believe in the power of teamwork, awareness, and creativity to solve real-world problems. By building a strong, passionate community, we aim to support local causes and make a lasting, meaningfulimpact.
                   </p>
-                  <p className="text-gray-700 leading-relaxed text-lg">
-                    Our 7 distinguished colleges represent the pinnacle of technical education, each contributing unique expertise to forge a comprehensive ecosystem of learning and technological advancement.
-                  </p>
+                  
                 </div>
               </div>
 
@@ -264,11 +262,7 @@ const CollegesSection = () => {
                   </h3>
                   <div className="space-y-4">
                     {[
-                      "Cross-institutional research collaborations and knowledge exchange",
-                      "Innovative joint projects driving technological breakthroughs",
-                      "Comprehensive platform for academic and cultural excellence",
-                      "Strategic industry partnerships creating unlimited opportunities",
-                      "Alumni network spanning global tech giants and startups"
+                      "Engineering India is a forward-thinking initiative that empowers students to explore their creativity and leadership potential. Through interactive sessions and hands-on activities, it promotes confidence, teamwork, and real-world problem-solving. Backed by Vidarbha Vaibhav, the platform is known for its contribution to educational excellence and community development. Inspired by Swami Vivekananda’s call to action, it motivates students to collaborate, grow, and aim high — creating a strong foundation for innovation, connection, and personal success."
                     ].map((achievement, index) => (
                       <div key={index} className="flex items-start group">
                         <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mr-4 mt-2 group-hover:animate-ping"></div>
