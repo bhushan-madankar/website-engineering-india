@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 node_modules
-=======
 # Dependencies
 node_modules/
 npm-debug.log*
@@ -112,4 +110,3 @@ debug.log
 # Backup files
 *.bak
 *.backup
->>>>>>> edca552e44fc616ee320a145bb03b02a5cb26960

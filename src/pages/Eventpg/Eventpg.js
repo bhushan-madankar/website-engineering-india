@@ -9,4 +9,4 @@ const Eventpg = () => {
   )
 }
 
-export default Eventpg
+export default Eventpg;

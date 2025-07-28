@@ -436,7 +436,6 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
 
 
 const stats = [
