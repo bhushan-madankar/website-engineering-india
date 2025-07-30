@@ -10,6 +10,8 @@ import {
   MicrophoneIcon,
   BuildingLibraryIcon,
 } from '@heroicons/react/24/outline';
+import { Navbar } from './Home';
+import { Footer } from './Magazine';
 
 // Define competition data with slightly more descriptive text for cards
 const competitions = [
@@ -55,12 +57,15 @@ const timelineData = [
   { year: "2024", title: "Mega Fest", desc: "Achieved a milestone with over 1000 attendees, significant media coverage, and widespread acclaim." },
 ];
 
-function Abhyudaya() {
+const Abhyudaya = () => {
+
   return (
+    <>
+    <Navbar />
     <div className="w-full font-inter antialiased"> {/* Apply Inter font globally, added antialiased */}
 
       {/* Hero Section: ABHYUDAYA */}
-      <section className="min-h-screen flex flex-col justify-center items-center px-6 py-12 text-gray-800 bg-gradient-to-br from-indigo-50 to-purple-50 relative overflow-hidden">
+      <section className="min-h-screen flex flex-col justify-center items-center px-6 py-12 text-gray-800 bg-gradient-to-br from-indigo-50 to-purple-50 relative overflow-hidden mt-24">
         {/* Subtle background pattern/texture - Adjusted color and size */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <svg className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -370,6 +375,8 @@ function Abhyudaya() {
       </section>
 
     </div>
+    <Footer/>
+    </>
   );
 }
 

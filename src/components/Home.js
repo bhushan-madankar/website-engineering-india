@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaUsers, FaUniversity, FaGraduationCap, FaHandshake, FaBars, FaTimes } from "react-icons/fa";
 import { FaUser, FaEnvelope, FaPhone } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom'; // Add this import
+import { Link } from 'react-router-dom';
 
 const images = [
   "/images/aboutpage.avif",
@@ -17,7 +17,7 @@ const Page = () => {
         {/* Container for main section */}
         <div className="w-full h-full flex flex-col md:flex-row">
           {/* Left Side: Text Content - full width on mobile, half on desktop */}
-          <div id="home" className="w-full md:w-1/2 flex flex-col justify-center items-center px-6 py-20 md:py-15 text-center md:mr-[3rem]">
+          <div id="home" className="w-full md:w-1/2 flex flex-col justify-center items-center px-6 py-20 md:py-15 text-center md:mr-[3rem] mt-24">
             <h1 className="text-4xl md:text-6xl font-semibold">
               <span className="text-[4.2rem] text-[#1d0e4e] font-extrabold tracking-wider">ENGINEERING</span>
               <br />
@@ -33,11 +33,11 @@ const Page = () => {
             <p className="text-[0.8rem] md:text-4xl max-w-[900px] mt-5 leading-tight font-[poppins] font-bold text-center">
               Think <span className="text-[#00008b] font-bold">Nationally</span>, Act <span className="text-[#059669] font-bold">Locally</span>
             </p>
-            <button 
-              onClick={() => document.getElementById('about').scrollIntoView({ behavior: 'smooth' })} 
+            <button
+              onClick={() => document.getElementById('events').scrollIntoView({ behavior: 'smooth' })}
               className="w-[160px] h-[40px] rounded-full bg-gradient-to-br from-[#faf5f3] to-[#d2f2fc] shadow-[0_20px_30px_-6px_rgba(238,103,97,0.5)] mt-6 text-black text-[1rem] font-medium flex items-center justify-center gap-2 transition-all duration-300 hover:translate-y-[3px] hover:shadow-none active:opacity-50"
             >
-              About Us <img src="/images/arrow.png" alt="arrow" />
+              Our Events <img src="/images/arrow.png" alt="arrow" />
             </button>
           </div>
 
@@ -114,6 +114,9 @@ const MobileImageSlider = () => {
   );
 };
 
+
+
+
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [joinModalOpen, setJoinModalOpen] = useState(false);
@@ -128,8 +131,6 @@ const Navbar = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  
-  const navigate = useNavigate(); // Add this hook
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -185,54 +186,59 @@ const Navbar = () => {
     }
   };
 
-  // Updated navigation handler
-  const handleNavigation = (item) => {
-    if (item === "Magazine") {
-      navigate('/magazine');
-    } else if (item === "Our Events") {
-      document.getElementById("events").scrollIntoView({ behavior: 'smooth' });
-    } else {
-      document.getElementById(item.toLowerCase().replace(" ", "")).scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <>
       {/* Navbar */}
-      <nav className="w-full fixed top-0 left-0 z-20 bg-[rgba(240,240,240,0.6)] backdrop-blur-[10px] shadow-sm">
-        <div className="max-w-screen-xl mx-auto flex items-center justify-between px-4 py-2 md:px-2 md:py-2">
+      <nav className="w-full fixed top-0 left-0 z-50 bg-white/80 backdrop-blur-md shadow-lg border-b border-white/20">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-2">
           {/* Logo */}
-          <img 
-            src="/images/logo.png" 
-            alt="Logo" 
-            className="w-[180px] md:w-[180px] cursor-pointer" 
-            onClick={() => navigate('/')}
-          />
+          <div className="flex items-center">
+            <img src="/images/logo.png" alt="Logo" className="w-[180px] md:w-[180px]" />
+          </div>
 
           {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden text-[#0d023b] text-2xl z-30"
+          <button
+            className="lg:hidden text-gray-700 text-2xl z-30 p-2 rounded-lg hover:bg-gray-100 transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <FaTimes /> : <FaBars />}
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-[2.5rem] text-[22px]">
-            <ul className="flex gap-[2.5rem] list-none">
-              {["Home", "Our Events", "Gallery", "About Us", "Magazine"].map((item, idx) => (
+          <div className="hidden lg:flex items-center gap-8 text-lg">
+            <ul className="flex gap-8 list-none">
+              {["Home", "Our Colleges", "About Us", "Abhyudaya", "Magazine"].map((item, idx) => (
                 <li
                   key={idx}
-                  onClick={() => handleNavigation(item)}
-                  className="cursor-pointer transition-transform duration-300 hover:scale-110"
+                  className="cursor-pointer font-medium text-gray-700 hover:text-indigo-600 transition-all duration-300 hover:scale-105 relative group"
                 >
-                  {item}
+                  {item === "Our Colleges" ? (
+                    <Link to="/clgsec">
+                      {item}
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 group-hover:w-full transition-all duration-300"></span>
+                    </Link>
+                  ) : ["Home", "Abhyudaya", "Magazine"].includes(item) ? (
+                    <Link to={`/${item.toLowerCase().replace(/\s+/g, "")}`}>
+                      {item}
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 group-hover:w-full transition-all duration-300"></span>
+                    </Link>
+                  ) : (
+                    <span
+                      onClick={() => {
+                        const id = item === "Our Events" ? "events" : item.toLowerCase().replace(" ", "");
+                        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                    >
+                      {item}
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 group-hover:w-full transition-all duration-300"></span>
+                    </span>
+                  )}
                 </li>
               ))}
             </ul>
 
             {/* Join Us Button */}
-            <button 
+            <button
               onClick={() => setJoinModalOpen(true)}
               className="relative text-[#f8f5f5] text-[18px] font-medium rounded-[30px] bg-[#0d023b] border border-[#e8e8e8] shadow-[6px_6px_12px_#c5c5c5,_-6px_-6px_12px_#ffffff] px-[1.5em] py-[0.6em] min-h-[3vh] overflow-hidden z-10 hover:text-white hover:border-[#009087] active:text-[#666] active:shadow-[inset_4px_4px_12px_#53f0d3,_inset_-4px_-4px_12px_#53f0d3]"
             >
@@ -244,22 +250,38 @@ const Navbar = () => {
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
           <div className="md:hidden absolute top-0 left-0 w-full h-screen bg-[rgba(240,240,240,0.95)] backdrop-blur-[10px] z-20 flex flex-col items-center justify-center gap-8 pt-20">
-            <ul className="flex flex-col items-center gap-8 text-[1.5rem] list-none">
-              {["Home", "Our Events", "Gallery", "About Us", "Magazine"].map((item, idx) => (
+            <ul className="flex flex-col gap-8 list-none">
+              {["Home", "Our Colleges", "About Us", "Abhyudaya", "Magazine"].map((item, idx) => (
                 <li
                   key={idx}
-                  onClick={() => {
-                    handleNavigation(item);
-                    setMobileMenuOpen(false);
-                  }}
-                  className="cursor-pointer transition-transform duration-300 hover:scale-110"
+                  className="cursor-pointer font-medium text-gray-700 hover:text-indigo-600 transition-all duration-300 hover:scale-105 relative group"
                 >
-                  {item}
+                  {item === "Our Colleges" ? (
+                    <Link to="/clgsec">
+                      {item}
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 group-hover:w-full transition-all duration-300"></span>
+                    </Link>
+                  ) : ["Home", "Abhyudaya", "Magazine"].includes(item) ? (
+                    <Link to={`/${item.toLowerCase().replace(" ", "")}`}>
+                      {item}
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 group-hover:w-full transition-all duration-300"></span>
+                    </Link>
+                  ) : (
+                    <span
+                      onClick={() => {
+                        const id = item === "Our Events" ? "events" : item.toLowerCase().replace(" ", "");
+                        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                    >
+                      {item}
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 group-hover:w-full transition-all duration-300"></span>
+                    </span>
+                  )}
                 </li>
               ))}
             </ul>
-            
-            <button 
+
+            <button
               onClick={() => {
                 setJoinModalOpen(true);
                 setMobileMenuOpen(false);
@@ -276,9 +298,9 @@ const Navbar = () => {
       {joinModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
           <div className="relative bg-white rounded-xl shadow-2xl w-full max-w-md mx-4 overflow-hidden">
-            <button 
+            <button
               onClick={() => setJoinModalOpen(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
+              className="absolute top 4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
             >
               <FaTimes className="text-xl" />
             </button>
@@ -287,7 +309,7 @@ const Navbar = () => {
               <h2 className="text-2xl font-bold text-center text-[#0d023b] mb-6">
                 Join Engineering India
               </h2>
-              
+
               {submitSuccess ? (
                 <div className="text-center py-8">
                   <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
@@ -443,28 +465,80 @@ const Navbar = () => {
   );
 };
 
+
+
 const stats = [
-  { label: "Coordinators", value: "250+", icon: <FaUsers size={45} /> },
-  { label: "Colleges Collaborated", value: "30+", icon: <FaUniversity size={45} /> },
-  { label: "Alumni Chapters", value: "15+", icon: <FaGraduationCap size={45} /> },
-  { label: "Volunteers", value: "1000+", icon: <FaHandshake size={45} /> },
+  { label: "Coordinators", value: "250+", icon: <FaUsers size={45} />, color: "from-blue-500 to-blue-600" },
+  { label: "Colleges Collaborated", value: "5+", icon: <FaUniversity size={45} />, color: "from-green-500 to-green-600" },
+  { label: "Alumni Chapters", value: "15+", icon: <FaGraduationCap size={45} />, color: "from-purple-500 to-purple-600" },
+  { label: "Volunteers", value: "250+", icon: <FaHandshake size={45} />, color: "from-orange-500 to-orange-600" },
 ];
 
 const StatsSection = () => {
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const element = document.getElementById('stats-section');
+    if (element) {
+      observer.observe(element);
+    }
+
+    return () => {
+      if (element) {
+        observer.unobserve(element);
+      }
+    };
+  }, []);
+
   return (
-    <section id="about" className="flex justify-around flex-wrap gap-[0.8rem] py-10 px-5 bg-[rgba(173,216,230,0.35)] backdrop-blur-md">
-      {stats.map((stat, index) => (
-        <div
-          key={index}
-          className="bg-[#ffffff] mb-[2rem] py-10 px-5 rounded-[12px] shadow-[0_15px_30px_rgba(0,0,0,0.1)] text-center flex flex-col justify-center w-[280px] h-[230px] transform transition duration-300 hover:scale-110 hover:shadow-xl font-poppins"
-        >
-          <div className="text-[3rem] mb-[1rem] flex justify-center items-center">{stat.icon}</div>
-          <div className="text-[2rem] text-[#040007] mb-[0.5rem] font-bold">{stat.value}</div>
-          <div className="text-[1.4rem] text-black font-semibold">
-            {stat.label}
-          </div>
+    <section
+      id="about"
+      className="py-20 px-6 bg-[rgba(173,216,230,0.35)] relative overflow-hidden"
+    >
+      <div id="stats-section" className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-4">
+            Our Impact
+          </h2>
         </div>
-      ))}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {stats.map((stat, index) => (
+            <div
+              key={index}
+              className={`group relative bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/20 text-center transform transition-all duration-700 hover:scale-105 hover:shadow-2xl ${inView ? 'animate-slide-up' : 'opacity-0 translate-y-10'
+                }`}
+              style={{ animationDelay: `${index * 200}ms` }}
+            >
+              <div className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-r ${stat.color} text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                {stat.icon}
+              </div>
+              <div className="text-4xl font-bold text-gray-800 mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-indigo-600 group-hover:to-purple-600 transition-all duration-300">
+                {stat.value}
+              </div>
+              <div className="text-lg font-semibold text-gray-600 group-hover:text-gray-800 transition-colors duration-300">
+                {stat.label}
+              </div>
+
+              {/* Hover effect overlay */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Background decorative elements */}
+      <div className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-blue-300/20 to-purple-300/20 rounded-full blur-2xl"></div>
+      <div className="absolute bottom-10 right-10 w-40 h-40 bg-gradient-to-br from-orange-300/20 to-pink-300/20 rounded-full blur-2xl"></div>
     </section>
   );
 };

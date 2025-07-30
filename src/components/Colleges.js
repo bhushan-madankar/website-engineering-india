@@ -95,7 +95,7 @@ const CollegesSection = () => {
 
   return (
     <div
-      className="min-h-screen py-20 px-6 relative overflow-hidden"
+      className="min-h-screen py-20 px-6 relative overflow-hidden mt-24"
       style={{ backgroundColor: 'rgba(173,216,230,0.35)' }}
     >
       {/* Floating Background Elements */}

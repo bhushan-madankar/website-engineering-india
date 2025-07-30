@@ -41,7 +41,7 @@ const EventsPage = () => {
   ];
 
   return (
-    <div id="events" className="bg-white min-h-screen font-sans"> {/* Added ID here */}
+    <div id="events" className="bg-[rgba(173,216,230,0.35)] min-h-screen font-sans"> {/* Added ID here */}
       {/* Banner */}
       <div className="relative h-[50vh] w-full overflow-hidden">
         <img
