@@ -9,4 +9,4 @@ const ClgSec = () => {
   )
 }
 
-export default ClgSec
+export default ClgSec;

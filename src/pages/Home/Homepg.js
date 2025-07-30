@@ -1,5 +1,5 @@
 import React from "react";
-import Hero from "../../components/Hero";
+
 
 import { Navbar, Page, StatsSection } from "../../components/Home";
 const HomePage = () => {
@@ -8,7 +8,7 @@ const HomePage = () => {
       <Navbar />
       <Page/>
       <StatsSection/>
-      <Hero />
+      
     </div>
   );
 };
