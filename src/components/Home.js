@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { FaUsers, FaUniversity, FaGraduationCap, FaHandshake, FaBars, FaTimes } from "react-icons/fa";
 import { FaUser, FaEnvelope, FaPhone } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom'; // Add this import
+
 const images = [
   "/images/aboutpage.avif",
   "/images/image2.png",
@@ -112,9 +114,6 @@ const MobileImageSlider = () => {
   );
 };
 
-
-
-
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [joinModalOpen, setJoinModalOpen] = useState(false);
@@ -129,6 +128,8 @@ const Navbar = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  
+  const navigate = useNavigate(); // Add this hook
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -184,13 +185,29 @@ const Navbar = () => {
     }
   };
 
+  // Updated navigation handler
+  const handleNavigation = (item) => {
+    if (item === "Magazine") {
+      navigate('/magazine');
+    } else if (item === "Our Events") {
+      document.getElementById("events").scrollIntoView({ behavior: 'smooth' });
+    } else {
+      document.getElementById(item.toLowerCase().replace(" ", "")).scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <>
       {/* Navbar */}
       <nav className="w-full fixed top-0 left-0 z-20 bg-[rgba(240,240,240,0.6)] backdrop-blur-[10px] shadow-sm">
         <div className="max-w-screen-xl mx-auto flex items-center justify-between px-4 py-2 md:px-2 md:py-2">
           {/* Logo */}
-          <img src="/images/logo.png" alt="Logo" className="w-[180px] md:w-[180px]" />
+          <img 
+            src="/images/logo.png" 
+            alt="Logo" 
+            className="w-[180px] md:w-[180px] cursor-pointer" 
+            onClick={() => navigate('/')}
+          />
 
           {/* Mobile Menu Button */}
           <button 
@@ -203,20 +220,14 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-[2.5rem] text-[22px]">
             <ul className="flex gap-[2.5rem] list-none">
-              {["Home", "Our Events", "Gallery", "About Us"].map((item, idx) => (
+              {["Home", "Our Events", "Gallery", "About Us", "Magazine"].map((item, idx) => (
                 <li
-                key={idx}
-                onClick={() => {
-                  if (item === "Our Events") {
-                    document.getElementById("events").scrollIntoView({ behavior: 'smooth' });
-                  } else {
-                    document.getElementById(item.toLowerCase().replace(" ", "")).scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                className="cursor-pointer transition-transform duration-300 hover:scale-110"
-              >
-                {item}
-              </li>
+                  key={idx}
+                  onClick={() => handleNavigation(item)}
+                  className="cursor-pointer transition-transform duration-300 hover:scale-110"
+                >
+                  {item}
+                </li>
               ))}
             </ul>
 
@@ -234,15 +245,11 @@ const Navbar = () => {
         {mobileMenuOpen && (
           <div className="md:hidden absolute top-0 left-0 w-full h-screen bg-[rgba(240,240,240,0.95)] backdrop-blur-[10px] z-20 flex flex-col items-center justify-center gap-8 pt-20">
             <ul className="flex flex-col items-center gap-8 text-[1.5rem] list-none">
-              {["Home", "Our Events", "Gallery", "About Us"].map((item, idx) => (
+              {["Home", "Our Events", "Gallery", "About Us", "Magazine"].map((item, idx) => (
                 <li
                   key={idx}
                   onClick={() => {
-                    if (item === "Our Events") {
-                      document.getElementById("events").scrollIntoView({ behavior: 'smooth' });
-                    } else {
-                      document.getElementById(item.toLowerCase().replace(" ", "")).scrollIntoView({ behavior: 'smooth' });
-                    }
+                    handleNavigation(item);
                     setMobileMenuOpen(false);
                   }}
                   className="cursor-pointer transition-transform duration-300 hover:scale-110"
@@ -271,7 +278,7 @@ const Navbar = () => {
           <div className="relative bg-white rounded-xl shadow-2xl w-full max-w-md mx-4 overflow-hidden">
             <button 
               onClick={() => setJoinModalOpen(false)}
-              className="absolute top 4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
             >
               <FaTimes className="text-xl" />
             </button>
@@ -436,8 +443,6 @@ const Navbar = () => {
   );
 };
 
-
-
 const stats = [
   { label: "Coordinators", value: "250+", icon: <FaUsers size={45} /> },
   { label: "Colleges Collaborated", value: "30+", icon: <FaUniversity size={45} /> },
@@ -465,4 +470,3 @@ const StatsSection = () => {
 };
 
 export { Navbar, Page, StatsSection };
-
