@@ -5,6 +5,7 @@ import HomePage from "./pages/Home/Homepg";
 import ClgSec from "./pages/ClgSec/ClgSec";
 import EventsPage from "./components/Eventpage";
 import AbhyudayaPage from "./pages/Abhyudaya/Abyudaya";
+import MagazinePage from "./pages/Magazine"; // ✅ Use wrapper here
 
 const App = () => {
   return (
@@ -22,10 +23,11 @@ const App = () => {
               </>
             }
           />
+          <Route path="/magazine" element={<MagazinePage />} /> {/* ✅ Updated */}
         </Routes>
       </div>
     </Router>
   );
-}
+};
 
 export default App;
