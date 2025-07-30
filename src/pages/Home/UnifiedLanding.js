@@ -7,7 +7,7 @@ import MagazinePage from '../Magazine';
 
 const UnifiedLanding = () => {
   return (
-    <div className="space-y-12 px-4">
+    <div className="space-y-20 px-4 py-8">
       <HomePage />
       <ClgSec />
       <EventsPage />
