@@ -1,33 +1,25 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
-import HomePage from "./pages/Home/Homepg";
-import ClgSec from "./pages/ClgSec/ClgSec";
-import EventsPage from "./components/Eventpage";
-import AbhyudayaPage from "./pages/Abhyudaya/Abyudaya";
-import MagazinePage from "./pages/Magazine"; // ✅ Use wrapper here
+import HomePage from './pages/Home/Homepg';
+import ClgSec from './pages/ClgSec/ClgSec';
+import EventsPage from './components/Eventpage';
+import AbhyudayaPage from './pages/Abhyudaya/Abyudaya'; // updated import path
+import MagazinePage from './pages/Magazine';
 
-const App = () => {
+function App() {
   return (
     <Router>
-      <div className="w-full">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <HomePage />
-                <AbhyudayaPage />
-                <EventsPage />
-                <ClgSec />
-              </>
-            }
-          />
-          <Route path="/magazine" element={<MagazinePage />} /> {/* ✅ Updated */}
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Navigate to="/abhyudaya" />} />
+        <Route path="/abhyudaya" element={<AbhyudayaPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/college" element={<ClgSec />} />
+        <Route path="/events" element={<EventsPage />} />
+        <Route path="/magazine" element={<MagazinePage />} />
+      </Routes>
     </Router>
   );
-};
+}
 
 export default App;
