@@ -11,7 +11,7 @@ const CollegesSection = () => {
       shortName: "COEP",
       logo: "🏛️",
       socialMedia: "@engineering_india_ccewn",
-      color: "bg-gradient-to-br from-rose-100 via-pink-100 to-rose-200",
+      color: "bg-gradient-to-br from-slate-50 to-gray-100",
       borderColor: "border-rose-300",
       accentColor: "rose",
       description: "Excellence in Engineering Education",
@@ -22,7 +22,7 @@ const CollegesSection = () => {
       shortName: "RBU",
       logo: "🎓",
       socialMedia: "@engineeringindia_rbu",
-      color: "bg-gradient-to-br from-emerald-100 via-green-100 to-teal-200",
+      color: "bg-gradient-to-br from-slate-50 to-gray-100",
       borderColor: "border-emerald-300",
       accentColor: "emerald",
       description: "Innovation Through Education",
@@ -33,7 +33,7 @@ const CollegesSection = () => {
       shortName: "YCCE",
       logo: "⚡",
       socialMedia: "@engineering.india_ycce",
-      color: "bg-gradient-to-br from-amber-100 via-orange-100 to-yellow-200",
+      color: "bg-gradient-to-br from-slate-50 to-gray-100",
       borderColor: "border-amber-300",
       accentColor: "amber",
       description: "Powering Future Engineers",
@@ -44,7 +44,7 @@ const CollegesSection = () => {
       shortName: "RAISONI",
       logo: "🚀",
       socialMedia: "@engineering_india.raisoni",
-      color: "bg-gradient-to-br from-violet-100 via-purple-100 to-indigo-200",
+      color: "bg-gradient-to-br from-slate-50 to-gray-100",
       borderColor: "border-violet-300",
       accentColor: "violet",
       description: "Launching Tomorrow's Leaders",
@@ -55,7 +55,7 @@ const CollegesSection = () => {
       shortName: "PALLOTTI",
       logo: "⭐",
       socialMedia: "@engineering.india_svpcet",
-      color: "bg-gradient-to-br from-sky-100 via-blue-100 to-cyan-200",
+      color: "bg-gradient-to-br from-slate-50 to-gray-100",
       borderColor: "border-sky-300",
       accentColor: "sky",
       description: "Shining Bright in Education",
@@ -66,7 +66,7 @@ const CollegesSection = () => {
       shortName: "KDK",
       logo: "💎",
       socialMedia: "@engineering.india_kdkce",
-      color: "bg-gradient-to-br from-yellow-100 via-amber-100 to-orange-200",
+      color: "bg-gradient-to-br from-slate-50 to-gray-100",
       borderColor: "border-yellow-300",
       accentColor: "yellow",
       description: "Crafting Precious Minds",
@@ -77,7 +77,7 @@ const CollegesSection = () => {
       shortName: "PRIYADARSHINI",
       logo: "🌟",
       socialMedia: "@engineering_india_pce",
-      color: "bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-200",
+      color: "bg-gradient-to-br from-slate-50 to-gray-100",
       borderColor: "border-indigo-300",
       accentColor: "indigo",
       description: "Illuminating Engineering Excellence",
@@ -158,7 +158,6 @@ const CollegesSection = () => {
                 </div>
               </div>
 
-              {/* College Details */}
               <div className="space-y-5 mb-8">
                 <div className="bg-white/60 rounded-xl p-4 backdrop-blur-sm border border-white/30 hover:bg-white/70 transition-all duration-300">
                   <div className="flex items-center text-gray-700">
@@ -169,7 +168,6 @@ const CollegesSection = () => {
                     </div>
                   </div>
                 </div>
-
                 <div className="bg-white/60 rounded-xl p-4 backdrop-blur-sm border border-white/30 hover:bg-white/70 transition-all duration-300">
                   <div className="flex items-center text-gray-700">
                     <Globe className="w-5 h-5 mr-3 text-gray-600" />
@@ -180,7 +178,6 @@ const CollegesSection = () => {
                   </div>
                 </div>
               </div>
-
               {/* College Image */}
               <div className="mb-6">
                 <div className="relative group overflow-hidden rounded-2xl shadow-lg">
@@ -240,38 +237,28 @@ const CollegesSection = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div className="space-y-6">
-                <div className="bg-white/60 rounded-2xl p-8 backdrop-blur-sm border border-white/30 shadow-lg hover:shadow-xl transition-all duration-300">
-                  <h3 className="text-3xl font-bold text-gray-800 flex items-center mb-6">
-                    <span className="text-4xl mr-4 animate-pulse">🌟</span>
-                    Our Mission
-                  </h3>
-                  <p className="text-gray-700 leading-relaxed text-lg mb-4">
-                    Our mission is to inspire students to bring positive change in society by turning their technical knowledge into action. We believe in the power of teamwork, awareness, and creativity to solve real-world problems. By building a strong, passionate community, we aim to support local causes and make a lasting, meaningfulimpact.
-                  </p>
-                  
-                </div>
-              </div>
-
-              <div className="space-y-6">
-                <div className="bg-white/60 rounded-2xl p-8 backdrop-blur-sm border border-white/30 shadow-lg hover:shadow-xl transition-all duration-300">
-                  <h3 className="text-3xl font-bold text-gray-800 flex items-center mb-6">
-                    <span className="text-4xl mr-4 animate-bounce">🚀</span>
-                    Our Achievements
-                  </h3>
-                  <div className="space-y-4">
-                    {[
-                      "Engineering India is a forward-thinking initiative that empowers students to explore their creativity and leadership potential. Through interactive sessions and hands-on activities, it promotes confidence, teamwork, and real-world problem-solving. Backed by Vidarbha Vaibhav, the platform is known for its contribution to educational excellence and community development. Inspired by Swami Vivekananda’s call to action, it motivates students to collaborate, grow, and aim high — creating a strong foundation for innovation, connection, and personal success."
-                    ].map((achievement, index) => (
-                      <div key={index} className="flex items-start group">
-                        <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mr-4 mt-2 group-hover:animate-ping"></div>
-                        <span className="text-gray-700 text-lg leading-relaxed group-hover:text-gray-900 transition-colors duration-200">
-                          {achievement}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
+            <div className="max-w-4xl mx-auto">
+              <div className="bg-white/60 rounded-2xl p-8 backdrop-blur-sm border border-white/30 shadow-lg hover:shadow-xl transition-all duration-300">
+                <h3 className="text-3xl font-bold text-gray-800 flex items-center justify-center mb-6">
+                  <span className="text-4xl mr-4 animate-bounce">🚀</span>
+                  Our Achievements
+                </h3>
+                <div className="space-y-4">
+                  {[
+                    "Encourages creativity and innovation by providing students with opportunities to explore, experiment, and excel in real-world challenges.",
+                    "Helps students unlock their hidden potential by cultivating leadership skills, confidence, and a growth mindset.",
+                    "Promotes an environment of team spirit and collaborative problem-solving through interactive events and technical activities.",
+                    "Backed by Vidarbha Vaibhav, a respected organization known for promoting educational excellence and social impact.",
+                    "Follows the inspiring path of Swami Vivekananda’s philosophy — “Arise, awake, and stop not till the goal is reached” — motivating students to push boundaries and aim high.",
+                    "Builds a strong sense of community, connection, and contribution, encouraging students to create meaningful bonds and impactful projects.",
+                  ].map((achievement, index) => (
+                    <div key={index} className="flex items-start group">
+                      <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mr-4 mt-2 group-hover:animate-ping"></div>
+                      <span className="text-gray-700 text-lg leading-relaxed group-hover:text-gray-900 transition-colors duration-200">
+                        {achievement}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -290,8 +277,8 @@ const CollegesSection = () => {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 
