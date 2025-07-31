@@ -34,7 +34,7 @@ const EventsPage = () => {
     },
     {
       id: 6,
-      title: "Excellon Software Visit - A Day of Learning and Inspiration",
+      title: "Industry Visit - A Day of Learning and Inspiration",
       description: "An inspiring industry visit to Excellon Software, Nagpur.Had the privilege to interact with Mr. Vinod Tambi, Co-founder of Excellon Software, and gain valuable insights into the tech world 🌟 A day filled with learning and inspiration!🚀📚.",
       image: "./images/excellon.jpg"
     }
