@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import HomePage from './pages/Home/Homepg';
 import ClgSec from './pages/ClgSec/ClgSec';
-// import EventsPage from './components/Eventpage';
+
 import AbhyudayaPage from './pages/Abhyudaya/Abyudaya'; // updated import path
 import MagazinePage from './pages/Magazine';
 
@@ -21,6 +21,7 @@ const App = () => {
               </>
             }
           />
+          
           <Route path="/home" element={<HomePage />} />
           <Route path="/clgsec" element={<ClgSec />} />
           <Route path="/abhyudaya" element={<AbhyudayaPage />} />

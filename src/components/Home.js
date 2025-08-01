@@ -21,7 +21,7 @@ const Page = () => {
           <div className="absolute bottom-40 left-1/4 w-2 h-2 bg-black/5 rounded-full animate-bounce delay-500"></div>
           <div className="absolute top-1/2 right-10 w-1 h-1 bg-black/10 rounded-full animate-ping delay-700"></div>
           <div className="absolute bottom-20 right-1/3 w-1 h-1 bg-black/15 rounded-full animate-pulse delay-300"></div>
-          
+
           {/* Very subtle floating elements */}
           <div className="absolute -top-20 -right-20 w-32 h-32 bg-white/5 rounded-full blur-3xl animate-float"></div>
           <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-white/3 rounded-full blur-3xl animate-float-delayed"></div>
@@ -48,16 +48,16 @@ const Page = () => {
             <p className="text-[0.8rem] md:text-4xl max-w-[900px] mt-5 leading-tight font-[poppins] font-bold text-center animate-fadeInUp delay-500">
               Think <span className="text-[#00008b] font-bold hover:scale-105 transition-transform duration-300 inline-block">Nationally</span>, Act <span className="text-[#059669] font-bold hover:scale-105 transition-transform duration-300 inline-block">Locally</span>
             </p>
-            
+
             <button
               onClick={() => document.getElementById('events')?.scrollIntoView({ behavior: 'smooth' })}
               className="w-[160px] h-[40px] rounded-full bg-gradient-to-br from-[#faf5f3] to-[#d2f2fc] shadow-[0_20px_30px_-6px_rgba(238,103,97,0.5)] mt-6 text-black text-[1rem] font-medium flex items-center justify-center gap-2 transition-all duration-300 hover:translate-y-[3px] hover:shadow-none active:opacity-50"
             >
               {/* Subtle shimmer effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-              
+
               <span className="relative z-10">Our Events</span>
-              
+
               <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">
                 <img src="/images/arrow.png" alt="arrow" className="group-hover:scale-110 transition-transform duration-300" />
               </span>
@@ -208,16 +208,14 @@ const ImageSlider = () => {
               <img
                 src={img}
                 alt={`Slide ${index}`}
-                className={`w-full h-full object-cover transition-all duration-1000 ease-in-out ${
-                  index === currentIndex 
-                    ? "opacity-100 scale-100 blur-0" 
+                className={`w-full h-full object-cover transition-all duration-1000 ease-in-out ${index === currentIndex
+                    ? "opacity-100 scale-100 blur-0"
                     : "opacity-0 scale-105 blur-sm"
-                }`}
+                  }`}
               />
               {/* Image overlay for better contrast */}
-              <div className={`absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent transition-opacity duration-1000 ${
-                index === currentIndex ? "opacity-100" : "opacity-0"
-              }`}></div>
+              <div className={`absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent transition-opacity duration-1000 ${index === currentIndex ? "opacity-100" : "opacity-0"
+                }`}></div>
             </div>
           ))}
         </div>
@@ -231,7 +229,7 @@ const ImageSlider = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
-        
+
         <button
           onClick={goToNext}
           className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 opacity-0 group-hover:opacity-100 hover:scale-110 z-30"
@@ -246,11 +244,10 @@ const ImageSlider = () => {
           {images.map((_, index) => (
             <button
               key={index}
-              className={`relative overflow-hidden rounded-full transition-all duration-300 ${
-                index === currentIndex 
-                  ? "w-8 h-3 bg-white shadow-lg" 
+              className={`relative overflow-hidden rounded-full transition-all duration-300 ${index === currentIndex
+                  ? "w-8 h-3 bg-white shadow-lg"
                   : "w-3 h-3 bg-white/60 hover:bg-white/80 hover:scale-110"
-              }`}
+                }`}
               onClick={() => setCurrentIndex(index)}
             >
               {index === currentIndex && (
@@ -265,7 +262,7 @@ const ImageSlider = () => {
           <div className="flex items-center space-x-2">
             <span>{currentIndex + 1} / {images.length}</span>
             <div className="w-12 h-1 bg-white/20 rounded-full overflow-hidden">
-              <div 
+              <div
                 className="h-full bg-white/80 rounded-full transition-all duration-300"
                 style={{ width: `${((currentIndex + 1) / images.length) * 100}%` }}
               ></div>
@@ -280,11 +277,11 @@ const ImageSlider = () => {
         >
           {isPlaying ? (
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+              <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
             </svg>
           ) : (
             <svg className="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M8 5v14l11-7z"/>
+              <path d="M8 5v14l11-7z" />
             </svg>
           )}
         </button>
@@ -350,16 +347,14 @@ const MobileImageSlider = () => {
               <img
                 src={img}
                 alt={`Slide ${index}`}
-                className={`w-full h-full object-cover transition-all duration-1000 ease-in-out ${
-                  index === currentIndex 
-                    ? "opacity-100 scale-100 blur-0" 
+                className={`w-full h-full object-cover transition-all duration-1000 ease-in-out ${index === currentIndex
+                    ? "opacity-100 scale-100 blur-0"
                     : "opacity-0 scale-105 blur-sm"
-                }`}
+                  }`}
               />
               {/* Mobile image overlay */}
-              <div className={`absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent transition-opacity duration-1000 ${
-                index === currentIndex ? "opacity-100" : "opacity-0"
-              }`}></div>
+              <div className={`absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent transition-opacity duration-1000 ${index === currentIndex ? "opacity-100" : "opacity-0"
+                }`}></div>
             </div>
           ))}
         </div>
@@ -373,7 +368,7 @@ const MobileImageSlider = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
-        
+
         <button
           onClick={goToNext}
           className="absolute right-2 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 opacity-0 group-hover:opacity-100 z-30"
@@ -388,11 +383,10 @@ const MobileImageSlider = () => {
           {images.map((_, index) => (
             <button
               key={index}
-              className={`relative overflow-hidden rounded-full transition-all duration-300 ${
-                index === currentIndex 
-                  ? "w-6 h-2 bg-white shadow-md" 
+              className={`relative overflow-hidden rounded-full transition-all duration-300 ${index === currentIndex
+                  ? "w-6 h-2 bg-white shadow-md"
                   : "w-2 h-2 bg-white/60 hover:bg-white/80"
-              }`}
+                }`}
               onClick={() => setCurrentIndex(index)}
             >
               {index === currentIndex && (
@@ -414,11 +408,11 @@ const MobileImageSlider = () => {
         >
           {isPlaying ? (
             <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+              <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
             </svg>
           ) : (
             <svg className="w-3 h-3 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M8 5v14l11-7z"/>
+              <path d="M8 5v14l11-7z" />
             </svg>
           )}
         </button>
@@ -534,7 +528,7 @@ const Navbar = () => {
                       {item}
                       <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 group-hover:w-full transition-all duration-300"></span>
                     </Link>
-                  ) : ["Home", "Abhyudaya", "Magazine"].includes(item) ? (
+                  ) : ["Home", "About Us", "Abhyudaya", "Magazine"].includes(item) ? (
                     <Link to={`/${item.toLowerCase().replace(/\s+/g, "")}`}>
                       {item}
                       <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 group-hover:w-full transition-all duration-300"></span>
