@@ -1,5 +1,7 @@
-import React from 'react';
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from "framer-motion";
+
+
 import {
   CodeBracketIcon,
   AcademicCapIcon,
@@ -12,6 +14,43 @@ import {
 } from '@heroicons/react/24/outline';
 import { Navbar } from './Home';
 import { Footer } from './Magazine';
+
+
+// ⬇️ Paste this just below your imports:
+const QuoteCarousel = () => {
+  const quotes = [
+    "Arise, awake, and stop not till the goal is reached – स्वामी विवेकानंद",
+    "I shall sow justice in every path I walk – अहिल्याबाई होलकर",
+    "In devotion lies our true power to uplift, protect, and serve the soul of our nation – अहिल्याबाई होलकर",
+    "The moment I have realized God, I am bound to serve – स्वामी विवेकानंद"
+  ];
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % quotes.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="relative flex items-center justify-center overflow-hidden max-w-4xl mx-auto py-10">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -30 }}
+          transition={{ duration: 0.6 }}
+          className="px-6 py-6 bg-gradient-to-br from-indigo-100 via-white to-orange-100 rounded-xl shadow-md font-medium text-lg text-gray-800 text-center max-w-3xl"
+        >
+          {quotes[index]}
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+};
+
 
 // Define competition data with slightly more descriptive text for cards
 const competitions = [
@@ -149,53 +188,136 @@ const Abhyudaya = () => {
         </motion.div>
       </section>
 
-      {/* Indian Knowledge Systems Section */}
-      <section className="bg-gradient-to-br from-gray-50 to-blue-50 px-6 py-20 text-center relative overflow-hidden">
-        {/* Subtle background pattern - More defined grid */}
-        <div className="absolute inset-0 opacity-8 pointer-events-none">
-          <svg className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <pattern id="pattern-grid-iks" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
-              <path d="M50 0H0V50H50V0ZM25 0H0V25H25V0ZM50 25H25V50H50V25Z" fill="#E0E7FF" /> {/* Lighter blue grid */}
-            </pattern>
-            <rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-grid-iks)" />
-          </svg>
-        </div>
 
-        <h2 className="text-4xl md:text-5xl font-extrabold text-blue-800 mb-5 drop-shadow-md">
-          Indian Knowledge Systems
-        </h2>
+    {/*INDIAN KNOWLEDGE SYSTEM*/}
 
-        {/* Decorative Divider */}
-        <div className="w-32 h-2 bg-gradient-to-r from-orange-500 via-white to-green-600 rounded-full mx-auto mb-12 shadow-lg"></div>
+    
+  
+<section className="bg-gradient-to-br from-indigo-50 via-white to-orange-50 px-6 py-20 text-center relative overflow-hidden animate-fade-in">
+  {/* Floating Mandala Motif */}
+  <div className="absolute inset-0 opacity-10 pointer-events-none animate-gradient-move">
+    <svg className="w-full h-full" fill="none">
+      <pattern id="iks-motif" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+        <circle cx="30" cy="30" r="25" stroke="#A5B4FC" strokeWidth="1.5" fill="none" />
+      </pattern>
+      <rect x="0" y="0" width="100%" height="100%" fill="url(#iks-motif)" />
+    </svg>
+  </div>
 
-        <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto mb-12 leading-relaxed">
-          Rooted in centuries of reasoning and harmony, Indian Knowledge Systems reflect the confluence of spirituality, science, and art — inspiring Abhyudaya’s theme last year.
-        </p>
+  {/* Title */}
+  <motion.h2
+    initial={{ opacity: 0, y: -30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+    className="text-4xl md:text-5xl font-extrabold text-indigo-800 mb-6 drop-shadow"
+  >
+    दर्शन और शासन – Wisdom and Leadership
+  </motion.h2>
 
-        {/* Knowledge Fields Grid with enhanced cards and subtle hover */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto mt-10">
-          {["योग", "आयुर्वेद", "गणित", "संगीत"].map((field, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.7, delay: index * 0.18, ease: "easeOut" }}
-              whileHover={{ scale: 1.07, boxShadow: "0 20px 40px rgba(0, 0, 0, 0.2)", zIndex: 10, transition: { type: "spring", stiffness: 300, damping: 10 } }}
-              className="bg-gradient-to-br from-blue-100 via-white to-indigo-100 shadow-xl rounded-3xl p-7 text-blue-900 font-extrabold text-xl border border-blue-200 flex flex-col items-center justify-center cursor-pointer transform transition-all duration-300 ease-in-out"
-            >
-              <span className="text-5xl md:text-6xl mb-4 animate-pulse-slow">{
-                // Emojis for visual appeal
-                index === 0 ? '🧘' :
-                index === 1 ? '🌿' :
-                index === 2 ? '🔢' :
-                '🎶'
-              }</span>
-              {field}
-            </motion.div>
-          ))}
-        </div>
-      </section>
+  {/* Divider */}
+  <motion.div
+    initial={{ scale: 0.7, opacity: 0 }}
+    whileInView={{ scale: 1, opacity: 1 }}
+    transition={{ type: "spring", stiffness: 260, damping: 20 }}
+    className="w-36 h-1 bg-gradient-to-r from-orange-500 via-white to-green-600 rounded-full mx-auto mb-10 shadow"
+  />
+
+  {/* Description */}
+  <motion.p
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.7, delay: 0.2 }}
+    className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto mb-12 leading-relaxed"
+  >
+    Celebrating the legacy of Indian Knowledge Systems through the lens of
+    <span className="font-semibold text-indigo-700"> Swami Vivekananda</span>, whose words ignited a spiritual renaissance,
+    and <span className="font-semibold text-orange-700"> Ahilyabai Holkar</span>, whose rule embodied dharma, equality, and devotion.
+    Their lives remind us that true wisdom lies in the unity of vision and action.
+  </motion.p>
+
+  {/* Icon Cards */}
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+    {[
+      { label: "वेदान्त", emoji: "🕉️" },
+      { label: "राजधर्म", emoji: "⚖️" },
+      { label: "योग", emoji: "🧘‍♀️" },
+      { label: "नारीशक्ति", emoji: "🌼" }
+    ].map((item, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: index * 0.15 }}
+        whileHover={{ scale: 1.08, rotate: 1 }}
+        className="bg-gradient-to-br from-indigo-100 via-white to-orange-100 rounded-2xl shadow-md p-6 text-indigo-700 font-bold text-xl flex flex-col items-center"
+      >
+        <motion.span
+          animate={{ y: [0, -5, 0] }}
+          transition={{ repeat: Infinity, duration: 3 }}
+          className="text-4xl mb-3"
+        >
+          {item.emoji}
+        </motion.span>
+        {item.label}
+      </motion.div>
+    ))}
+  </div>
+
+  {/* 🔁 Continuous Horizontal Quote Sequence */}
+ {/* 🔁 Horizontal Quote Ticker: Alternating Ahilyabai & Vivekananda */}
+<div className="overflow-hidden w-full py-10">
+  <motion.div
+    className="flex gap-8 px-4"
+    animate={{ x: ["0%", "-100%"] }}
+    transition={{
+      repeat: Infinity,
+      duration: 18, // slightly faster
+      ease: "linear"
+    }}
+  >
+    {[
+      {
+        quote: "In devotion lies our true power to uplift, protect, and serve – अहिल्याबाई होलकर",
+        bg: "from-pink-100 via-white to-pink-200"
+      },
+      {
+        quote: "Arise, awake, and stop not till the goal is reached – स्वामी विवेकानंद",
+        bg: "from-orange-100 via-white to-indigo-100"
+      },
+      {
+        quote: "I shall sow justice in every path I walk – अहिल्याबाई होलकर",
+        bg: "from-pink-100 via-white to-pink-200"
+      },
+      {
+        quote: "The moment I have realized God, I am bound to serve – स्वामी विवेकानंद",
+        bg: "from-orange-100 via-white to-indigo-100"
+      }
+    ].map((item, i) => (
+      <div
+        key={i}
+        className={`px-6 py-4 bg-gradient-to-br ${item.bg} rounded-xl shadow-md font-medium text-lg text-gray-800 whitespace-nowrap flex-shrink-0`}
+      >
+        {item.quote}
+      </div>
+    ))}
+  </motion.div>
+</div>
+
+
+  {/* Footer Sanskrit Line */}
+  <motion.p
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 2 }}
+    className="mt-12 text-center text-xl italic text-gray-600 font-serif"
+  >
+    “विवेक दीपो विधेः पथप्रदः, करुणा छाया धर्मस्य दायिनी।”
+  </motion.p>
+</section>
+
+
+
+
 
       {/* Competitions Section */}
       <section className="min-h-screen w-full px-4 py-20 bg-gradient-to-br from-emerald-50 via-white to-teal-50 text-gray-900 relative overflow-hidden">
