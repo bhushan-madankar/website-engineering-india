@@ -200,10 +200,10 @@ const CollegesSection = () => {
         {/* Enhanced Stats Section */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
           {[
-            { label: "Premier Colleges", value: "7", icon: <BookOpen className="w-8 h-8" />, color: "from-pink-200 to-rose-300", textColor: "text-rose-700" },
-            { label: "Engineering Teams", value: "7", icon: <Users className="w-8 h-8" />, color: "from-blue-200 to-sky-300", textColor: "text-sky-700" },
-            { label: "Campus Locations", value: "7", icon: <Globe className="w-8 h-8" />, color: "from-green-200 to-emerald-300", textColor: "text-emerald-700" },
-            { label: "Social Channels", value: "7", icon: <Zap className="w-8 h-8" />, color: "from-purple-200 to-violet-300", textColor: "text-violet-700" }
+            { label: "Premier Colleges", value: "8", icon: <BookOpen className="w-8 h-8" />, color: "from-pink-200 to-rose-300", textColor: "text-rose-700" },
+            { label: "Engineering Teams", value: "8", icon: <Users className="w-8 h-8" />, color: "from-blue-200 to-sky-300", textColor: "text-sky-700" },
+            { label: "Campus Locations", value: "8", icon: <Globe className="w-8 h-8" />, color: "from-green-200 to-emerald-300", textColor: "text-emerald-700" },
+            { label: "Social Channels", value: "8", icon: <Zap className="w-8 h-8" />, color: "from-purple-200 to-violet-300", textColor: "text-violet-700" }
           ].map((stat, index) => (
             <div key={index} className={`bg-gradient-to-br ${stat.color} border-2 border-white/60 rounded-3xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 backdrop-blur-sm`}>
               <div className={`${stat.textColor} mb-4 flex justify-center animate-bounce`} style={{ animationDelay: `${index * 0.2}s` }}>
