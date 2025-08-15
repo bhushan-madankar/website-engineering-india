@@ -530,14 +530,19 @@ const Navbar = () => {
     }
   };
 
+  // Modified CDP handler to open in same tab
+  const handleCDPClick = () => {
+    window.location.href = "https://engineeringindia.co.in";
+  };
+
   const navItems = [
     { name: "Home", route: "/", fileName: "Home.js" },
     { name: "Our Colleges", route: "/clgsec", fileName: "ClgSec.js" },
     { name: "About Us", route: "/about", fileName: "About.js" },
     { name: "Abhyudaya", route: "/abhyudaya", fileName: "Abhyudaya.js" },
+    { name: "CDP", url: "https://engineeringindia.co.in", external: true, samePage: true },
     { name: "Magazine", route: "/magazine", fileName: "Magazine.js" }
   ];
-
 
   return (
     <>
@@ -574,9 +579,29 @@ const Navbar = () => {
                     : 'text-gray-700 hover:text-indigo-600'
                     }`}
                 >
-                  <Link to={item.route} onClick={() => setCurrentPage(item.name.toLowerCase().replace(' ', ''))}>
-                    {item.name}
-                  </Link>
+                  {item.external ? (
+                    item.samePage ? (
+                      <button 
+                        onClick={handleCDPClick}
+                        className="block"
+                      >
+                        {item.name}
+                      </button>
+                    ) : (
+                      <a 
+                        href={item.url} 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block"
+                      >
+                        {item.name}
+                      </a>
+                    )
+                  ) : (
+                    <Link to={item.route} onClick={() => setCurrentPage(item.name.toLowerCase().replace(' ', ''))}>
+                      {item.name}
+                    </Link>
+                  )}
                   <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 transition-all duration-300 ${currentPage === item.name.toLowerCase().replace(' ', '')
                     ? 'w-full'
                     : 'w-0 group-hover:w-full'
@@ -600,9 +625,42 @@ const Navbar = () => {
           <div className="lg:hidden fixed top-0 left-0 w-full h-screen bg-[rgba(240,240,240,0.98)] backdrop-blur-[15px] z-40 flex flex-col items-center justify-center gap-8 pt-20">
             <ul className="flex flex-col gap-8 list-none">
               {navItems.map((item, idx) => (
-                <Link to={item.route} onClick={() => { setCurrentPage(item.name.toLowerCase().replace(' ', '')); setMobileMenuOpen(false); }}>
-                  {item.name}
-                </Link>
+                <li key={idx} className="text-center">
+                  {item.external ? (
+                    item.samePage ? (
+                      <button 
+                        onClick={() => {
+                          handleCDPClick();
+                          setMobileMenuOpen(false);
+                        }}
+                        className="text-lg font-medium text-gray-700 hover:text-indigo-600 transition-colors duration-300"
+                      >
+                        {item.name}
+                      </button>
+                    ) : (
+                      <a 
+                        href={item.url} 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-lg font-medium text-gray-700 hover:text-indigo-600 transition-colors duration-300"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {item.name}
+                      </a>
+                    )
+                  ) : (
+                    <Link 
+                      to={item.route} 
+                      onClick={() => { 
+                        setCurrentPage(item.name.toLowerCase().replace(' ', '')); 
+                        setMobileMenuOpen(false); 
+                      }}
+                      className="text-lg font-medium text-gray-700 hover:text-indigo-600 transition-colors duration-300"
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </li>
               ))}
             </ul>
 
