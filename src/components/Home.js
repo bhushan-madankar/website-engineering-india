@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { FaUsers, FaUniversity, FaGraduationCap, FaHandshake, FaBars, FaTimes } from "react-icons/fa";
 import { FaUser, FaEnvelope, FaPhone } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 
 const images = [
   "/images/aboutpage.avif",
@@ -8,189 +12,185 @@ const images = [
   "/images/image3.png",
   "/images/RASHTRABHIMAN.avif",
 ];
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i = 1) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.2, duration: 0.6, ease: "easeOut" }
+  })
+};
+const Page = () => {
+  const [init, setInit] = useState(false);
 
-const HomePage = () => {
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setInit(true);
+    });
+  }, []);
+
   return (
     <>
-      {/* 1. NAVBAR COMPONENT INCLUSION */}
-      {/* Include the navbar - this renders the header */}
       <Navbar />
-      
-      {/* 2. MAIN CONTENT WITH TOP PADDING */}
-      {/* Main content with top padding to account for fixed navbar */}
-      <div className="bg-[rgba(173,216,230,0.35)] backdrop-blur-md min-h-screen text-gray-800 pt-20">
-        {/* ☝️ The pt-20 (padding-top: 5rem) ensures content doesn't hide behind the fixed header */}
+
+      <div className="bg-[rgba(210, 230, 250, 0.4)] backdrop-blur-xs min-h-screen text-gray-800 pt-18 relative overflow-hidden">
         
-        {/* Rest of the page content... */}
-        <div className="relative w-full min-h-screen text-black overflow-hidden">
-          {/* Subtle animated background particles */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-10 left-10 w-1 h-1 bg-black/10 rounded-full animate-ping"></div>
-            <div className="absolute top-32 right-20 w-1 h-1 bg-black/15 rounded-full animate-pulse delay-1000"></div>
-            <div className="absolute bottom-40 left-1/4 w-2 h-2 bg-black/5 rounded-full animate-bounce delay-500"></div>
-            <div className="absolute top-1/2 right-10 w-1 h-1 bg-black/10 rounded-full animate-ping delay-700"></div>
-            <div className="absolute bottom-20 right-1/3 w-1 h-1 bg-black/15 rounded-full animate-pulse delay-300"></div>
+        {/* Interactive Particles Background */}
+        {init && (
+          <Particles
+            id="tsparticles"
+            className="absolute inset-0 -z-10"
+            options={{
+              background: { color: "rgba(210, 230, 250, 0.4)" },
+              fpsLimit: 60,
+              interactivity: {
+                events: {
+                  onHover: { enable: true, mode: "repulse" },
+                  onClick: { enable: true, mode: "push" }
+                },
+                modes: {
+                  repulse: { distance: 100 },
+                  push: { quantity: 4 }
+                }
+              },
+              particles: {
+                color: { value: "#1d0e4e" },
+                links: {
+                  color: "#1d0e4e",
+                  distance: 150,
+                  enable: true,
+                  opacity: 0.3,
+                  width: 1
+                },
+                move: { enable: true, speed: 2 },
+                number: { value: 80 },
+                opacity: { value: 0.5 },
+                shape: { type: "circle" },
+                size: { value: { min: 1, max: 4 } }
+              },
+              detectRetina: true
+            }}
+          />
+        )}
 
-            {/* Very subtle floating elements */}
-            <div className="absolute -top-20 -right-20 w-32 h-32 bg-white/5 rounded-full blur-3xl animate-float"></div>
-            <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-white/3 rounded-full blur-3xl animate-float-delayed"></div>
-          </div>
+        <div className="relative z-10 w-full min-h-screen flex flex-col md:flex-row">
+          {/* Left Text */}
+          <motion.div
+            id="home"
+            className="w-full md:w-1/2 flex flex-col justify-center items-center px-6 py-20 text-center md:mr-[3rem]"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <motion.h1
+              variants={fadeUp}
+              className="text-4xl md:text-6xl font-semibold"
+            >
+              <span className="text-[4.2rem] text-[#1d0e4e] font-extrabold tracking-wider drop-shadow-sm py-2">
+                ENGINEERING
+              </span>
+              <br />
+              <span className="flex justify-center items-center mt-2">
+                {["I", "N", "D", "I", "A"].map((letter, index) => {
+                  const colors = [
+                    "#ea7707",
+                    "#fe9124",
+                    "#f9f8f9",
+                    "#138808",
+                    "#0b6623"
+                  ];
+                  const textColors = [
+                    "#FFFFFF",
+                    "#FFFFFF",
+                    "rgb(128,0,128)",
+                    "#FFFFFF",
+                    "#FFFFFF"
+                  ];
+                  return (
+                    <motion.span
+                      key={letter}
+                      variants={fadeUp}
+                      custom={index + 1}
+                      whileHover={{ scale: 1.1 }}
+                      className={`text-[3.5rem] font-black px-[0.5rem] py-2 rounded-sm shadow-md`}
+                      style={{
+                        backgroundColor: colors[index],
+                        color: textColors[index]
+                      }}
+                    >
+                      {letter}
+                    </motion.span>
+                  );
+                })}
+              </span>
+            </motion.h1>
 
-          {/* Container for main section */}
-          <div className="relative z-10 w-full h-full flex flex-col md:flex-row">
-            {/* Left Side: Text Content - full width on mobile, half on desktop */}
-            <div id="home" className="w-full md:w-1/2 flex flex-col justify-center items-center px-6 py-20 md:py-15 text-center md:mr-[3rem]">
-              <h1 className="text-4xl md:text-6xl font-semibold animate-fadeInUp">
-                <span className="text-[4.2rem] text-[#1d0e4e] font-extrabold tracking-wider drop-shadow-sm hover:drop-shadow-md transition-all duration-500">
-                  ENGINEERING
-                </span>
-                <br />
-                <span className="flex justify-center items-center mt-2 animate-slideInUp delay-300">
-                  <span className="text-[#FFFFFF] text-[3.5rem] font-black px-[0.5rem] py-2 bg-[#ea7707] rounded-sm shadow-md transform hover:scale-105 hover:shadow-lg transition-all duration-300">I</span>
-                  <span className="text-[#FFFFFF] text-[3.5rem] font-black px-[0.5rem] py-2 bg-[#fe9124] rounded-sm shadow-md transform hover:scale-105 hover:shadow-lg transition-all duration-300">N</span>
-                  <span className="text-[rgb(128,0,128)] text-[3.5rem] font-black px-[0.5rem] py-2 bg-[#f9f8f9] rounded-sm shadow-md transform hover:scale-105 hover:shadow-lg transition-all duration-300">D</span>
-                  <span className="text-[#FFFFFF] text-[3.5rem] font-black px-[0.5rem] py-2 bg-[#138808] rounded-sm shadow-md transform hover:scale-105 hover:shadow-lg transition-all duration-300">I</span>
-                  <span className="text-[#FFFFFF] text-[3.5rem] font-black px-[0.5rem] py-2 bg-[#0b6623] rounded-sm shadow-md transform hover:scale-105 hover:shadow-lg transition-all duration-300">A</span>
-                </span>
-              </h1>
+            <motion.p
+              variants={fadeUp}
+              custom={6}
+              className="text-[0.8rem] md:text-4xl max-w-[900px] mt-5 leading-tight font-[poppins] font-bold text-center"
+            >
+              Think{" "}
+              <span className="text-[#00008b] font-bold">Nationally</span>, Act{" "}
+              <span className="text-[#059669] font-bold">Locally</span>
+            </motion.p>
 
-              <p className="text-[0.8rem] md:text-4xl max-w-[900px] mt-5 leading-tight font-[poppins] font-bold text-center animate-fadeInUp delay-500">
-                Think <span className="text-[#00008b] font-bold hover:scale-105 transition-transform duration-300 inline-block">Nationally</span>, Act <span className="text-[#059669] font-bold hover:scale-105 transition-transform duration-300 inline-block">Locally</span>
-              </p>
+            <motion.button
+              variants={fadeUp}
+              custom={7}
+              onClick={() =>
+                document
+                  .getElementById("events")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+              className="group w-[160px] h-[40px] rounded-full bg-gradient-to-br from-[#faf5f3] to-[#d2f2fc] shadow-[0_20px_30px_-6px_rgba(238,103,97,0.5)] mt-6 text-black text-[1rem] font-medium flex items-center justify-center gap-2 transition-all duration-300 hover:translate-y-[3px] hover:shadow-none active:opacity-50 relative overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+              <span className="relative z-10">Our Events</span>
+              <span className="relative z-10">
+                <img
+                  src="/images/arrow.png"
+                  alt="arrow"
+                  className="group-hover:scale-110 transition-transform duration-300"
+                />
+              </span>
+            </motion.button>
+          </motion.div>
 
-              <button
-                onClick={() => document.getElementById('events')?.scrollIntoView({ behavior: 'smooth' })}
-                className="group w-[160px] h-[40px] rounded-full bg-gradient-to-br from-[#faf5f3] to-[#d2f2fc] shadow-[0_20px_30px_-6px_rgba(238,103,97,0.5)] mt-6 text-black text-[1rem] font-medium flex items-center justify-center gap-2 transition-all duration-300 hover:translate-y-[3px] hover:shadow-none active:opacity-50 relative overflow-hidden"
-              >
-                {/* Subtle shimmer effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-
-                <span className="relative z-10">Our Events</span>
-
-                <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">
-                  <img src="/images/arrow.png" alt="arrow" className="group-hover:scale-110 transition-transform duration-300" />
-                </span>
-              </button>
-            </div>
-
-            {/* Right Side: Image Slider - hidden on mobile (md:flex) */}
-            <div className="hidden md:flex md:w-1/2 md:flex-row md:justify-center md:px-5 md:py-4">
-              <ImageSlider />
-            </div>
-          </div>
-
-          {/* Image Slider for mobile - shown below content on mobile only */}
-          <div className="block md:hidden w-full px-2 py-4">
-            <MobileImageSlider />
-          </div>
+          {/* Right Slider */}
+          <motion.div
+            className="hidden md:flex md:w-1/2 md:justify-center md:px-5 md:py-4"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <ImageSlider />
+          </motion.div>
         </div>
 
-        {/* Stats Section */}
-        <StatsSection />
-      </div>
+        {/* Mobile Slider */}
+        <motion.div
+          className="block md:hidden w-full px-2 py-4"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <MobileImageSlider />
+        </motion.div>
 
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        @keyframes slideInUp {
-          from {
-            opacity: 0;
-            transform: translateY(50px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-10px);
-          }
-        }
-        
-        @keyframes float-delayed {
-          0%, 100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-8px);
-          }
-        }
-        
-        .animate-fadeInUp {
-          animation: fadeInUp 0.8s ease-out forwards;
-        }
-        
-        .animate-slideInUp {
-          animation: slideInUp 0.8s ease-out forwards;
-          opacity: 0;
-        }
-        
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
-        }
-        
-        .animate-float-delayed {
-          animation: float-delayed 8s ease-in-out infinite;
-        }
-        
-        @keyframes loading-bar {
-          0% {
-            width: 0%;
-          }
-          100% {
-            width: 100%;
-          }
-        }
-        
-        .animate-loading-bar {
-          animation: loading-bar 2s linear infinite;
-        }
-        
-        @keyframes slide-up {
-          from {
-            opacity: 0;
-            transform: translateY(50px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        .animate-slide-up {
-          animation: slide-up 0.6s ease-out forwards;
-        }
-        
-        .delay-300 {
-          animation-delay: 0.3s;
-        }
-        
-        .delay-500 {
-          animation-delay: 0.5s;
-        }
-        
-        .delay-700 {
-          animation-delay: 0.7s;
-        }
-        
-        .delay-1000 {
-          animation-delay: 1s;
-        }
-      `}</style>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <StatsSection />
+        </motion.div>
+      </div>
     </>
   );
 };
@@ -241,8 +241,8 @@ const ImageSlider = () => {
                 src={img}
                 alt={`Slide ${index}`}
                 className={`w-full h-full object-cover transition-all duration-1000 ease-in-out ${index === currentIndex
-                    ? "opacity-100 scale-100 blur-0"
-                    : "opacity-0 scale-105 blur-sm"
+                  ? "opacity-100 scale-100 blur-0"
+                  : "opacity-0 scale-105 blur-sm"
                   }`}
               />
               {/* Image overlay for better contrast */}
@@ -277,8 +277,8 @@ const ImageSlider = () => {
             <button
               key={index}
               className={`relative overflow-hidden rounded-full transition-all duration-300 ${index === currentIndex
-                  ? "w-8 h-3 bg-white shadow-lg"
-                  : "w-3 h-3 bg-white/60 hover:bg-white/80 hover:scale-110"
+                ? "w-8 h-3 bg-white shadow-lg"
+                : "w-3 h-3 bg-white/60 hover:bg-white/80 hover:scale-110"
                 }`}
               onClick={() => setCurrentIndex(index)}
             >
@@ -380,8 +380,8 @@ const MobileImageSlider = () => {
                 src={img}
                 alt={`Slide ${index}`}
                 className={`w-full h-full object-cover transition-all duration-1000 ease-in-out ${index === currentIndex
-                    ? "opacity-100 scale-100 blur-0"
-                    : "opacity-0 scale-105 blur-sm"
+                  ? "opacity-100 scale-100 blur-0"
+                  : "opacity-0 scale-105 blur-sm"
                   }`}
               />
               {/* Mobile image overlay */}
@@ -416,8 +416,8 @@ const MobileImageSlider = () => {
             <button
               key={index}
               className={`relative overflow-hidden rounded-full transition-all duration-300 ${index === currentIndex
-                  ? "w-6 h-2 bg-white shadow-md"
-                  : "w-2 h-2 bg-white/60 hover:bg-white/80"
+                ? "w-6 h-2 bg-white shadow-md"
+                : "w-2 h-2 bg-white/60 hover:bg-white/80"
                 }`}
               onClick={() => setCurrentIndex(index)}
             >
@@ -538,24 +538,21 @@ const Navbar = () => {
     { name: "Magazine", route: "/magazine", fileName: "Magazine.js" }
   ];
 
-  const handleNavigation = (route, name, fileName) => {
-    setCurrentPage(name.toLowerCase().replace(' ', ''));
-    setMobileMenuOpen(false);
-    
-    // In a real React app, you would use React Router for navigation
-    console.log(`Navigate to: ${fileName} at route: ${route}`);
-  };
 
   return (
     <>
       {/* Fixed Navbar with higher z-index */}
-      <nav className="w-full fixed top-0 left-0 z-50 bg-white/95 backdrop-blur-lg shadow-lg border-b border-white/20">
+      <nav className="w-full fixed top-0 left-0 z-50 bg-white/95 backdrop-blur-sm shadow-lg border-b border-white/20">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-2">
           {/* Logo */}
           <div className="flex items-center">
-            <button onClick={() => handleNavigation("/", "Home", "Home.js")}>
-              <img src="/images/logo.png" alt="Engineering India" className="w-[180px] md:w-[180px] hover:scale-105 transition-transform duration-300" />
-            </button>
+            <Link to="/" onClick={() => setCurrentPage('home')}>
+              <img
+                src="/images/logo.png"
+                alt="Engineering India"
+                className="w-[180px] md:w-[180px] hover:scale-105 transition-transform duration-300"
+              />
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -572,19 +569,18 @@ const Navbar = () => {
               {navItems.map((item, idx) => (
                 <li
                   key={idx}
-                  className={`cursor-pointer font-medium transition-all duration-300 hover:scale-105 relative group ${
-                    currentPage === item.name.toLowerCase().replace(' ', '') 
-                      ? 'text-indigo-600' 
-                      : 'text-gray-700 hover:text-indigo-600'
-                  }`}
-                  onClick={() => handleNavigation(item.route, item.name, item.fileName)}
+                  className={`cursor-pointer font-medium transition-all duration-300 hover:scale-105 relative group ${currentPage === item.name.toLowerCase().replace(' ', '')
+                    ? 'text-indigo-600'
+                    : 'text-gray-700 hover:text-indigo-600'
+                    }`}
                 >
-                  {item.name}
-                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 transition-all duration-300 ${
-                    currentPage === item.name.toLowerCase().replace(' ', '')
-                      ? 'w-full'
-                      : 'w-0 group-hover:w-full'
-                  }`}></span>
+                  <Link to={item.route} onClick={() => setCurrentPage(item.name.toLowerCase().replace(' ', ''))}>
+                    {item.name}
+                  </Link>
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 transition-all duration-300 ${currentPage === item.name.toLowerCase().replace(' ', '')
+                    ? 'w-full'
+                    : 'w-0 group-hover:w-full'
+                    }`}></span>
                 </li>
               ))}
             </ul>
@@ -604,22 +600,9 @@ const Navbar = () => {
           <div className="lg:hidden fixed top-0 left-0 w-full h-screen bg-[rgba(240,240,240,0.98)] backdrop-blur-[15px] z-40 flex flex-col items-center justify-center gap-8 pt-20">
             <ul className="flex flex-col gap-8 list-none">
               {navItems.map((item, idx) => (
-                <li
-                  key={idx}
-                  className={`cursor-pointer font-medium transition-all duration-300 hover:scale-105 relative group text-center text-xl ${
-                    currentPage === item.name.toLowerCase().replace(' ', '') 
-                      ? 'text-indigo-600' 
-                      : 'text-gray-700 hover:text-indigo-600'
-                  }`}
-                  onClick={() => handleNavigation(item.route, item.name, item.fileName)}
-                >
+                <Link to={item.route} onClick={() => { setCurrentPage(item.name.toLowerCase().replace(' ', '')); setMobileMenuOpen(false); }}>
                   {item.name}
-                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 transition-all duration-300 ${
-                    currentPage === item.name.toLowerCase().replace(' ', '')
-                      ? 'w-full'
-                      : 'w-0 group-hover:w-full'
-                  }`}></span>
-                </li>
+                </Link>
               ))}
             </ul>
 
@@ -842,7 +825,7 @@ const StatsSection = () => {
   return (
     <section
       id="stats-section"
-      className="py-20 px-6 bg-white/60 backdrop-blur-sm relative overflow-hidden"
+      className="py-20 px-6 bg-white/60 backdrop-blur-xs relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
@@ -856,9 +839,8 @@ const StatsSection = () => {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className={`group relative bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/20 text-center transform transition-all duration-700 hover:scale-105 hover:shadow-2xl ${
-                inView ? 'animate-slide-up opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
+              className={`group relative bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/20 text-center transform transition-all duration-700 hover:scale-105 hover:shadow-2xl ${inView ? 'animate-slide-up opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
               style={{ animationDelay: `${index * 200}ms` }}
             >
               <div className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-r ${stat.color} text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
@@ -873,7 +855,7 @@ const StatsSection = () => {
 
               {/* Hover effect overlay */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              
+
               {/* Decorative corner elements */}
               <div className="absolute top-0 right-0 w-8 h-8 bg-gradient-to-bl from-white/30 to-transparent rounded-bl-full"></div>
               <div className="absolute bottom-0 left-0 w-8 h-8 bg-gradient-to-tr from-white/30 to-transparent rounded-tr-full"></div>
@@ -889,4 +871,4 @@ const StatsSection = () => {
   );
 };
 
-export { Navbar, HomePage as default, StatsSection };
+export { Navbar, Page, StatsSection };

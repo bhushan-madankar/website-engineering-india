@@ -17,12 +17,10 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
-<<<<<<< HEAD
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.9.1",
     "aos": "^2.3.4",
     "framer-motion": "^12.23.6",
-=======
-    "framer-motion": "^12.23.12",
->>>>>>> 2634cbe5ba5d2bbe9630736cbc71f345a9f70368
     "lucide-react": "^0.525.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

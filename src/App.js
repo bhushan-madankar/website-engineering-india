@@ -5,7 +5,7 @@ import HomePage from './pages/Home/Homepg';
 import ClgSec from './pages/ClgSec/ClgSec';
 import AbhyudayaPage from './pages/Abhyudaya/Abyudaya';
 import MagazinePage from './pages/Magazine';
-import About from './pages/About/Index'; // ✅ clean import using wrapper
+import About from './pages/About/Index';
 
 const App = () => {
   return (

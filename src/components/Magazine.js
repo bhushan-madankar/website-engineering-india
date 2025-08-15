@@ -3,6 +3,12 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Navbar } from "./Home";
+import {
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
+} from "lucide-react";
 
 const magazineData = [
   {
@@ -23,17 +29,17 @@ const magazineData = [
 ];
 
 const eventGallery = [
-  { 
+  {
     src: "/images/event1.png",
     title: "Trail of Ingenuity",
     description: "Organic farming awareness session at Gaushala, Devtapar near Ramtek Gadhmandir. Sanchalak highlighted sustainable practices combining traditional methods with modern knowledge."
   },
-  { 
+  {
     src: "/images/event2.png",
     title: "Rangeet Talim",
     description: "Educational outreach program where coordinators teach underprivileged students from slum areas, providing quality education to those who cannot afford it."
   },
-  { 
+  {
     src: "/images/event3.png",
     title: "Yodhini - Self Defense Workshop",
     description: "Multi-college self-defense training program where certified instructors teach essential safety techniques to students across Engineering India chapters."
@@ -88,10 +94,10 @@ const useIntersectionObserver = (options = {}) => {
 // Animation wrapper component
 const AnimatedSection = ({ children, className = "", delay = 0, direction = "up" }) => {
   const [ref, isVisible] = useIntersectionObserver();
-  
+
   const getTransformClass = () => {
     const baseClasses = "transition-all duration-1000 ease-out";
-    
+
     if (!isVisible) {
       switch (direction) {
         case "up":
@@ -108,13 +114,13 @@ const AnimatedSection = ({ children, className = "", delay = 0, direction = "up"
           return `${baseClasses} transform translate-y-20 opacity-0`;
       }
     }
-    
+
     return `${baseClasses} transform translate-y-0 translate-x-0 scale-100 opacity-100`;
   };
 
   return (
-    <div 
-      ref={ref} 
+    <div
+      ref={ref}
       className={`${getTransformClass()} ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
@@ -148,7 +154,7 @@ const Magazines = () => {
     <>
       {/* Include the navbar */}
       <Navbar />
-      
+
       {/* Main content with top padding to account for fixed navbar */}
       <div className="bg-[rgba(173,216,230,0.35)] backdrop-blur-md min-h-screen text-gray-800 pt-20">
         {/* Hero Section */}
@@ -165,7 +171,7 @@ const Magazines = () => {
                 <span className="text-[#FFFFFF] text-[3.5rem] md:text-[4rem] font-black px-[0.8rem] py-2 bg-gradient-to-r from-[#006400] to-[#228B22] rounded-lg shadow-lg">A</span>
               </span>
             </h1>
-            
+
             {/* Sanskrit Quote */}
             <AnimatedSection direction="up" delay={300} className="mt-8 px-4">
               <p className="text-[#B22222] text-xl md:text-2xl font-bold tracking-wide">
@@ -175,7 +181,7 @@ const Magazines = () => {
                 "One who acts with pure intentions never faces failure"
               </p>
             </AnimatedSection>
-            
+
             <AnimatedSection direction="up" delay={600}>
               <p className="text-xl md:text-2xl max-w-4xl mx-auto mt-8 leading-relaxed font-medium text-[#1d0e4e]">
                 Discover stories of <span className="text-[#ea7707] font-bold">Innovation</span>, celebrate <span className="text-[#138808] font-bold">Excellence</span>, and explore the future of engineering
@@ -230,7 +236,7 @@ const Magazines = () => {
                 <Slider {...sliderSettings}>
                   {eventGallery.map((event, idx) => (
                     <div key={idx} className="px-4">
-                      <div 
+                      <div
                         className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 group"
                         onMouseEnter={() => setHoveredEvent(idx)}
                         onMouseLeave={() => setHoveredEvent(null)}
@@ -240,7 +246,7 @@ const Magazines = () => {
                           alt={event.title}
                           className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
                         />
-                        
+
                         {/* Overlay with modern glassmorphism effect */}
                         <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-all duration-300 ${hoveredEvent === idx ? 'opacity-100' : 'opacity-0'}`}>
                           <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -250,7 +256,7 @@ const Magazines = () => {
                             </div>
                           </div>
                         </div>
-                        
+
                         {/* Modern hover indicator */}
                         <div className={`absolute top-4 right-4 bg-white/20 backdrop-blur-md rounded-full p-2 transition-all duration-300 ${hoveredEvent === idx ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}>
                           <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -309,7 +315,7 @@ const Magazines = () => {
             </svg>
           </button>
         )}
-        
+
       </div>
       <AnimatedSection direction="up">
         <Footer />
@@ -320,21 +326,38 @@ const Magazines = () => {
 
 export default Magazines;
 
+
 const Footer = () => {
   return (
-    <footer className="bg-white border-t mt-5 py-12">
+    <footer className="border-t mt-5 py-5">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col items-center">
+          {/* Logo */}
           <img src="/images/logo.png" alt="Logo" className="w-30 h-20 mb-6" />
 
-          <div className="flex flex-wrap justify-center gap-8 text-gray-600 text-lg">
-            <a href="#about" className="hover:text-[#1d0e4e] transition-colors duration-300">About</a>
-            <a href="#events" className="hover:text-[#1d0e4e] transition-colors duration-300">Events</a>
-            <a href="#blog" className="hover:text-[#1d0e4e] transition-colors duration-300">Blog</a>
-            <a href="#team" className="hover:text-[#1d0e4e] transition-colors duration-300">Team</a>
-            <a href="#contact" className="hover:text-[#1d0e4e] transition-colors duration-300">Contact</a>
+          {/* Social Media Icons */}
+          <div className="flex justify-center space-x-6 mt-2 animate-fadeInUp delay-300">
+            {[
+              { Icon: Facebook, name: "Facebook", color: "hover:bg-blue-600", link: "https://facebook.com/yourpage" },
+              { Icon: Twitter, name: "Twitter", color: "hover:bg-blue-400", link: "https://twitter.com/yourhandle" },
+              { Icon: Instagram, name: "Instagram", color: "hover:bg-pink-600", link: "https://www.instagram.com/engineering_india2047?igsh=MTNpaWthOWRvajI4eA==" },
+              { Icon: Linkedin, name: "LinkedIn", color: "hover:bg-blue-700", link: "https://www.linkedin.com/company/engineeringindia-2047/" }
+            ].map(({ Icon, name, color, link }, i) => (
+              <a
+                key={i}
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`group bg-gray-100 border border-gray-300 text-gray-700 ${color} hover:text-white rounded-full p-4 transition-all duration-300 hover:scale-110 hover:shadow-lg`}
+              >
+                <Icon className="h-6 w-6 group-hover:scale-110 transition-transform duration-300" />
+                <span className="sr-only">{name}</span>
+              </a>
+            ))}
           </div>
 
+
+          {/* Copyright */}
           <div className="mt-8 text-center text-gray-500">
             <p>&copy; 2024 Engineering India. All rights reserved.</p>
           </div>
@@ -342,6 +365,6 @@ const Footer = () => {
       </div>
     </footer>
   );
-}; 
+};
 
 export { Magazines, Footer };
