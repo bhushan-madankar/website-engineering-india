@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
+import { Particles } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
+
 
 
 import {
@@ -116,6 +119,37 @@ const Abhyudaya = () => {
         </div>
 
         {/* Animated Heading */}
+     <Particles
+  id="abhyudaya-particles"
+  init={async (main) => {
+    await loadSlim(main);
+  }}
+  options={{
+    fullScreen: { enable: false },
+    particles: {
+      number: { value: 110 }, // 🔼 Increased particle count
+      color: { value: ["#FF5722", "#1C1C1C", "#0B6623"] }, // 🔥 Darker tricolor shades
+      shape: { type: "circle" },
+      opacity: { value: 0.6 },
+      size: { value: 3 },
+      move: {
+        enable: true,
+        speed: 2.5,
+        direction: "none",
+        outModes: { default: "bounce" }
+      },
+      links: {
+        enable: true,
+        color: "#555",
+        distance: 100,
+        opacity: 0.4,
+        width: 1
+      }
+    }
+  }}
+  className="absolute inset-0 z-0"
+/>
+
         <motion.h1
           initial={{ scale: 0.7, opacity: 0, y: -70 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -195,6 +229,36 @@ const Abhyudaya = () => {
   
 <section className="bg-gradient-to-br from-indigo-50 via-white to-orange-50 px-6 py-20 text-center relative overflow-hidden animate-fade-in">
   {/* Floating Mandala Motif */}
+ 
+  <Particles
+    id="iks-particles"
+    init={async (main) => await loadSlim(main)}
+    options={{
+      fullScreen: { enable: false },
+      particles: {
+        number: { value: 50 },
+        color: { value: ["#FF5722", "#1C1C1C", "#0B6623"] },
+        shape: { type: "circle" },
+        opacity: { value: 0.6 },
+        size: { value: 3 },
+        move: {
+          enable: true,
+          speed: 2.5,
+          direction: "none",
+          outModes: { default: "bounce" }
+        },
+        links: {
+          enable: true,
+          color: "#555",
+          distance: 100,
+          opacity: 0.4,
+          width: 1
+        }
+      }
+    }}
+    className="absolute inset-0 z-0"
+  />
+
   <div className="absolute inset-0 opacity-10 pointer-events-none animate-gradient-move">
     <svg className="w-full h-full" fill="none">
       <pattern id="iks-motif" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
@@ -320,8 +384,39 @@ const Abhyudaya = () => {
 
 
       {/* Competitions Section */}
-      <section className="min-h-screen w-full px-4 py-20 bg-gradient-to-br from-emerald-50 via-white to-teal-50 text-gray-900 relative overflow-hidden">
         {/* Decorative elements - Larger, more subtle */}
+        <section className="min-h-screen w-full px-4 py-20 bg-gradient-to-br from-emerald-50 via-white to-teal-50 text-gray-900 relative overflow-hidden">
+  {/* Particle Background */}
+  <Particles
+    id="competitions-particles"
+    init={async (main) => await loadSlim(main)}
+    options={{
+      fullScreen: { enable: false },
+      particles: {
+        number: { value: 50 }, // 🔽 Reduced particle count
+        color: { value: ["#FF5722", "#1C1C1C", "#0B6623"] },
+        shape: { type: "circle" },
+        opacity: { value: 0.6 },
+        size: { value: 3 },
+        move: {
+          enable: true,
+          speed: 2.5,
+          direction: "none",
+          outModes: { default: "bounce" }
+        },
+        links: {
+          enable: true,
+          color: "#555",
+          distance: 100,
+          opacity: 0.4,
+          width: 1
+        }
+      }
+    }}
+    className="absolute inset-0 z-0"
+  />
+
+        
         <div className="absolute top-10 left-10 text-9xl opacity-5 rotate-12 pointer-events-none text-blue-300">🏆</div>
         <div className="absolute bottom-10 right-10 text-9xl opacity-5 -rotate-12 pointer-events-none text-green-300">✨</div>
 
@@ -365,8 +460,38 @@ const Abhyudaya = () => {
       </section>
 
       {/* Cherished Memories Section */}
-      <section className="min-h-screen w-full px-4 py-20 bg-gradient-to-br from-pink-50 via-white to-purple-50 text-gray-900 relative overflow-hidden">
         {/* Decorative elements - Larger, more vibrant */}
+        <section className="min-h-screen w-full px-4 py-20 bg-gradient-to-br from-pink-50 via-white to-purple-50 text-gray-900 relative overflow-hidden">
+  {/* Particle Background */}
+  <Particles
+    id="memories-particles"
+    init={async (main) => await loadSlim(main)}
+    options={{
+      fullScreen: { enable: false },
+      particles: {
+        number: { value: 50 },
+        color: { value: ["#FF5722", "#1C1C1C", "#0B6623"] },
+        shape: { type: "circle" },
+        opacity: { value: 0.6 },
+        size: { value: 3 },
+        move: {
+          enable: true,
+          speed: 2.5,
+          direction: "none",
+          outModes: { default: "bounce" }
+        },
+        links: {
+          enable: true,
+          color: "#555",
+          distance: 100,
+          opacity: 0.4,
+          width: 1
+        }
+      }
+    }}
+    className="absolute inset-0 z-0"
+  />
+
         <div className="absolute top-5 right-5 text-9xl opacity-8 rotate-45 pointer-events-none text-pink-300">📸</div>
         <div className="absolute bottom-5 left-5 text-9xl opacity-8 -rotate-45 pointer-events-none text-purple-300">💖</div>
 
@@ -401,6 +526,34 @@ const Abhyudaya = () => {
 
       {/* Testimonials Section */}
       <section className="relative w-full px-4 py-20 bg-gradient-to-br from-blue-50 via-white to-sky-100 text-gray-900 overflow-hidden">
+<Particles
+  id="testimonials-particles"
+  init={async (main) => await loadSlim(main)}
+  options={{
+    fullScreen: { enable: false },
+    particles: {
+      number: { value: 80 },
+      color: { value: ["#FF5722", "#1C1C1C", "#0B6623"] },
+      shape: { type: "circle" },
+      opacity: { value: 0.6 },
+      size: { value: 3 },
+      move: {
+        enable: true,
+        speed: 2.5,
+        direction: "none",
+        outModes: { default: "bounce" }
+      },
+      links: {
+        enable: true,
+        color: "#555",
+        distance: 100,
+        opacity: 0.4,
+        width: 1
+      }
+    }
+  }}
+  className="absolute inset-0 z-0"
+/>
 
         {/* 💬 Decorative Emoji Strip Along Right Margin (Desktop Only) - Enhanced opacity and colors */}
         <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 flex flex-col gap-5 text-5xl opacity-15 pointer-events-none p-4">
@@ -444,6 +597,34 @@ const Abhyudaya = () => {
 
       {/* Timeline Section */}
       <section className="relative w-full px-4 py-20 bg-gradient-to-br from-indigo-50 via-white to-purple-50 text-gray-900 overflow-hidden">
+<Particles
+  id="timeline-particles"
+  init={async (main) => await loadSlim(main)}
+  options={{
+    fullScreen: { enable: false },
+    particles: {
+      number: { value: 80 },
+      color: { value: ["#FF5722", "#1C1C1C", "#0B6623"] },
+      shape: { type: "circle" },
+      opacity: { value: 0.6 },
+      size: { value: 3 },
+      move: {
+        enable: true,
+        speed: 2.5,
+        direction: "none",
+        outModes: { default: "bounce" }
+      },
+      links: {
+        enable: true,
+        color: "#555",
+        distance: 100,
+        opacity: 0.4,
+        width: 1
+      }
+    }
+  }}
+  className="absolute inset-0 z-0"
+/>
 
         {/* 🌌 Decorative Background Icon - Enhanced opacity and colors */}
         <div className="absolute top-10 left-10 text-9xl opacity-10 select-none pointer-events-none text-purple-300">
