@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { Particles } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-
-
+import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 
 import {
   CodeBracketIcon,
@@ -17,43 +16,6 @@ import {
 } from '@heroicons/react/24/outline';
 import { Navbar } from './Home';
 import { Footer } from './Magazine';
-
-
-// ⬇️ Paste this just below your imports:
-const QuoteCarousel = () => {
-  const quotes = [
-    "Arise, awake, and stop not till the goal is reached – स्वामी विवेकानंद",
-    "I shall sow justice in every path I walk – अहिल्याबाई होलकर",
-    "In devotion lies our true power to uplift, protect, and serve the soul of our nation – अहिल्याबाई होलकर",
-    "The moment I have realized God, I am bound to serve – स्वामी विवेकानंद"
-  ];
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % quotes.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
-
-  return (
-    <div className="relative flex items-center justify-center overflow-hidden max-w-4xl mx-auto py-10">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -30 }}
-          transition={{ duration: 0.6 }}
-          className="px-6 py-6 bg-gradient-to-br from-indigo-100 via-white to-orange-100 rounded-xl shadow-md font-medium text-lg text-gray-800 text-center max-w-3xl"
-        >
-          {quotes[index]}
-        </motion.div>
-      </AnimatePresence>
-    </div>
-  );
-};
-
 
 // Define competition data with slightly more descriptive text for cards
 const competitions = [
@@ -99,7 +61,48 @@ const timelineData = [
   { year: "2024", title: "Mega Fest", desc: "Achieved a milestone with over 1000 attendees, significant media coverage, and widespread acclaim." },
 ];
 
+// Memories data for slideshow
+const memoriesData = [
+  {
+    src: "/images/im1.jpg",
+    title: "Opening Ceremony",
+    description: "The grand inauguration that set the tone for an unforgettable event"
+  },
+  {
+    src: "/images/im2.jpg", 
+    title: "Competition Highlights",
+    description: "Moments of intense competition and brilliant performances"
+  },
+  {
+    src: "/images/im3.jpg",
+    title: "Cultural Performances", 
+    description: "Vibrant displays of talent and artistic expression"
+  },
+  {
+    src: "/images/im4.jpg",
+    title: "Award Ceremony",
+    description: "Celebrating achievements and recognizing outstanding contributions"
+  }
+];
+
 const Abhyudaya = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Auto-advance slideshow
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % memoriesData.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % memoriesData.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + memoriesData.length) % memoriesData.length);
+  };
 
   return (
     <>
@@ -222,11 +225,7 @@ const Abhyudaya = () => {
         </motion.div>
       </section>
 
-
     {/*INDIAN KNOWLEDGE SYSTEM*/}
-
-    
-  
 <section className="bg-gradient-to-br from-indigo-50 via-white to-orange-50 px-6 py-20 text-center relative overflow-hidden animate-fade-in">
   {/* Floating Mandala Motif */}
  
@@ -367,7 +366,6 @@ const Abhyudaya = () => {
   </motion.div>
 </div>
 
-
   {/* Footer Sanskrit Line */}
   <motion.p
     initial={{ opacity: 0, y: 40 }}
@@ -375,13 +373,9 @@ const Abhyudaya = () => {
     transition={{ duration: 2 }}
     className="mt-12 text-center text-xl italic text-gray-600 font-serif"
   >
-    “विवेक दीपो विधेः पथप्रदः, करुणा छाया धर्मस्य दायिनी।”
+    "विवेक दीपो विधेः पथप्रदः, करुणा छाया धर्मस्य दायिनी।"
   </motion.p>
 </section>
-
-
-
-
 
       {/* Competitions Section */}
         {/* Decorative elements - Larger, more subtle */}
@@ -460,68 +454,155 @@ const Abhyudaya = () => {
       </section>
 
       {/* Cherished Memories Section */}
-        {/* Decorative elements - Larger, more vibrant */}
-        <section className="min-h-screen w-full px-4 py-20 bg-gradient-to-br from-pink-50 via-white to-purple-50 text-gray-900 relative overflow-hidden">
-  {/* Particle Background */}
-  <Particles
-    id="memories-particles"
-    init={async (main) => await loadSlim(main)}
-    options={{
-      fullScreen: { enable: false },
-      particles: {
-        number: { value: 50 },
-        color: { value: ["#FF5722", "#1C1C1C", "#0B6623"] },
-        shape: { type: "circle" },
-        opacity: { value: 0.6 },
-        size: { value: 3 },
-        move: {
-          enable: true,
-          speed: 2.5,
-          direction: "none",
-          outModes: { default: "bounce" }
-        },
-        links: {
-          enable: true,
-          color: "#555",
-          distance: 100,
-          opacity: 0.4,
-          width: 1
-        }
-      }
-    }}
-    className="absolute inset-0 z-0"
-  />
+      <section className="relative w-full px-4 py-20 bg-gradient-to-br from-rose-50 via-white to-amber-50 text-gray-900 overflow-hidden">
+        {/* Particle Background */}
+        <Particles
+          id="memories-particles"
+          init={async (main) => await loadSlim(main)}
+          options={{
+            fullScreen: { enable: false },
+            particles: {
+              number: { value: 60 },
+              color: { value: ["#FF5722", "#1C1C1C", "#0B6623"] },
+              shape: { type: "circle" },
+              opacity: { value: 0.6 },
+              size: { value: 3 },
+              move: {
+                enable: true,
+                speed: 2.5,
+                direction: "none",
+                outModes: { default: "bounce" }
+              },
+              links: {
+                enable: true,
+                color: "#555",
+                distance: 100,
+                opacity: 0.4,
+                width: 1
+              }
+            }
+          }}
+          className="absolute inset-0 z-0"
+        />
 
-        <div className="absolute top-5 right-5 text-9xl opacity-8 rotate-45 pointer-events-none text-pink-300">📸</div>
-        <div className="absolute bottom-5 left-5 text-9xl opacity-8 -rotate-45 pointer-events-none text-purple-300">💖</div>
+        {/* Decorative elements */}
+        <div className="absolute top-10 left-10 text-9xl opacity-5 rotate-12 pointer-events-none text-rose-300">📸</div>
+        <div className="absolute bottom-10 right-10 text-9xl opacity-5 -rotate-12 pointer-events-none text-amber-300">💫</div>
 
-        <h2 className="text-5xl md:text-6xl text-center font-extrabold text-rose-800 mb-16 tracking-wide drop-shadow-lg leading-tight">
-          Cherished Memories <br /> From Our Journey
-        </h2>
+        {/* Section Title */}
+        <motion.h2
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-5xl md:text-6xl font-extrabold text-center text-rose-800 mb-16 drop-shadow-lg leading-tight"
+        >
+          Cherished Memories <br />
+          <span className="text-3xl md:text-4xl text-amber-700">Moments That Define Us</span>
+        </motion.h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-          {Array.from({ length: 8 }).map((_, index) => (
+        {/* Slideshow Container */}
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
+          className="relative max-w-4xl mx-auto bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden border border-rose-100"
+        >
+          {/* Image Display */}
+          <div className="relative h-80 md:h-96 overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSlide}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+                className="absolute inset-0"
+              >
+                <img
+                  src={memoriesData[currentSlide].src}
+                  alt={memoriesData[currentSlide].title}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.src = `https://placehold.co/800x500/6366f1/ffffff?text=${encodeURIComponent(memoriesData[currentSlide].title)}`;
+                  }}
+                />
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Navigation Arrows */}
+            <motion.button
+              whileHover={{ scale: 1.1, backgroundColor: "rgba(255, 255, 255, 0.9)" }}
+              whileTap={{ scale: 0.9 }}
+              onClick={prevSlide}
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/70 backdrop-blur-sm rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 z-10"
+            >
+              <ChevronLeftIcon className="h-6 w-6 text-gray-800" />
+            </motion.button>
+
+            <motion.button
+              whileHover={{ scale: 1.1, backgroundColor: "rgba(255, 255, 255, 0.9)" }}
+              whileTap={{ scale: 0.9 }}
+              onClick={nextSlide}
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/70 backdrop-blur-sm rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 z-10"
+            >
+              <ChevronRightIcon className="h-6 w-6 text-gray-800" />
+            </motion.button>
+          </div>
+
+          {/* Slide Indicators */}
+          <div className="flex justify-center gap-3 py-6 bg-gradient-to-r from-rose-100 to-amber-100">
+            {memoriesData.map((_, index) => (
+              <motion.button
+                key={index}
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-4 h-4 rounded-full transition-all duration-300 ${
+                  currentSlide === index 
+                    ? 'bg-rose-600 shadow-lg' 
+                    : 'bg-gray-300 hover:bg-gray-400'
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Memory Counter */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="absolute top-6 right-6 bg-black/70 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold"
+          >
+            {currentSlide + 1} / {memoriesData.length}
+          </motion.div>
+        </motion.div>
+
+        {/* Memory Stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-16"
+        >
+          {[
+            { number: "2500+", label: "Participants" },
+            { number: "250+", label: "Coordinators" },
+            { number: "8", label: "Competitions" },
+            { number: "13", label: "Years Strong" }
+          ].map((stat, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              whileHover={{ scale: 1.05, boxShadow: "0 25px 50px rgba(0, 0, 0, 0.3)", transition: { duration: 0.3 } }}
-              transition={{ duration: 0.7, delay: index * 0.1, ease: "easeOut" }}
-              className="bg-white/95 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition duration-300 cursor-pointer border border-gray-100 transform hover:border-rose-300"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              whileHover={{ scale: 1.05 }}
+              className="bg-white/80 backdrop-blur-md rounded-2xl p-6 text-center shadow-lg border border-rose-200 hover:border-rose-400 transition-all duration-300"
             >
-              <img
-                src={`/memories/${index + 1}.jpg`}
-                alt={`Memory ${index + 1}`}
-                className="w-full h-56 object-cover hover:scale-115 transition-transform duration-700 ease-in-out"
-                onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/400x300/FAD0C4/000000?text=Image+Missing"; }} // More appealing placeholder
-              />
-              <div className="p-5 text-center">
-                <p className="text-sm text-gray-600 font-medium">Moment from Abhyudaya {2024 - (8 - (index + 1))}</p>
-              </div>
+              <div className="text-3xl font-extrabold text-rose-700 mb-2">{stat.number}</div>
+              <div className="text-gray-700 font-semibold">{stat.label}</div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* Testimonials Section */}
@@ -580,7 +661,7 @@ const Abhyudaya = () => {
               whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0, 0, 0, 0.25)", transition: { duration: 0.3 } }}
               className="bg-white/95 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition duration-300 border border-blue-100 flex flex-col justify-between transform hover:border-blue-300"
             >
-              <p className="text-gray-700 text-base italic mb-7 leading-relaxed">“{testimonial.feedback}”</p>
+              <p className="text-gray-700 text-base italic mb-7 leading-relaxed">"{testimonial.feedback}"</p>
               <div className="flex items-center mt-auto">
                 <img
                   src={testimonial.image}

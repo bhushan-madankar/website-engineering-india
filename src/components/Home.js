@@ -530,17 +530,13 @@ const Navbar = () => {
     }
   };
 
-  // Modified CDP handler to open in same tab
-  const handleCDPClick = () => {
-    window.location.href = "https://engineeringindia.co.in";
-  };
-
+  // Updated navItems array - removed external CDP link
   const navItems = [
     { name: "Home", route: "/", fileName: "Home.js" },
     { name: "Our Colleges", route: "/clgsec", fileName: "ClgSec.js" },
     { name: "About Us", route: "/about", fileName: "About.js" },
     { name: "Abhyudaya", route: "/abhyudaya", fileName: "Abhyudaya.js" },
-    { name: "CDP", url: "https://engineeringindia.co.in", external: true, samePage: true },
+    { name: "CDP", route: "/cdp", fileName: "CDP.js" }, // Changed to internal route
     { name: "Magazine", route: "/magazine", fileName: "Magazine.js" }
   ];
 
@@ -579,29 +575,9 @@ const Navbar = () => {
                     : 'text-gray-700 hover:text-indigo-600'
                     }`}
                 >
-                  {item.external ? (
-                    item.samePage ? (
-                      <button 
-                        onClick={handleCDPClick}
-                        className="block"
-                      >
-                        {item.name}
-                      </button>
-                    ) : (
-                      <a 
-                        href={item.url} 
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block"
-                      >
-                        {item.name}
-                      </a>
-                    )
-                  ) : (
-                    <Link to={item.route} onClick={() => setCurrentPage(item.name.toLowerCase().replace(' ', ''))}>
-                      {item.name}
-                    </Link>
-                  )}
+                  <Link to={item.route} onClick={() => setCurrentPage(item.name.toLowerCase().replace(' ', ''))}>
+                    {item.name}
+                  </Link>
                   <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 transition-all duration-300 ${currentPage === item.name.toLowerCase().replace(' ', '')
                     ? 'w-full'
                     : 'w-0 group-hover:w-full'
@@ -626,40 +602,16 @@ const Navbar = () => {
             <ul className="flex flex-col gap-8 list-none">
               {navItems.map((item, idx) => (
                 <li key={idx} className="text-center">
-                  {item.external ? (
-                    item.samePage ? (
-                      <button 
-                        onClick={() => {
-                          handleCDPClick();
-                          setMobileMenuOpen(false);
-                        }}
-                        className="text-lg font-medium text-gray-700 hover:text-indigo-600 transition-colors duration-300"
-                      >
-                        {item.name}
-                      </button>
-                    ) : (
-                      <a 
-                        href={item.url} 
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-lg font-medium text-gray-700 hover:text-indigo-600 transition-colors duration-300"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {item.name}
-                      </a>
-                    )
-                  ) : (
-                    <Link 
-                      to={item.route} 
-                      onClick={() => { 
-                        setCurrentPage(item.name.toLowerCase().replace(' ', '')); 
-                        setMobileMenuOpen(false); 
-                      }}
-                      className="text-lg font-medium text-gray-700 hover:text-indigo-600 transition-colors duration-300"
-                    >
-                      {item.name}
-                    </Link>
-                  )}
+                  <Link 
+                    to={item.route} 
+                    onClick={() => { 
+                      setCurrentPage(item.name.toLowerCase().replace(' ', '')); 
+                      setMobileMenuOpen(false); 
+                    }}
+                    className="text-lg font-medium text-gray-700 hover:text-indigo-600 transition-colors duration-300"
+                  >
+                    {item.name}
+                  </Link>
                 </li>
               ))}
             </ul>

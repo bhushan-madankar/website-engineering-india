@@ -6,6 +6,7 @@ import ClgSec from './pages/ClgSec/ClgSec';
 import AbhyudayaPage from './pages/Abhyudaya/Abyudaya';
 import MagazinePage from './pages/Magazine';
 import About from './pages/About/Index';
+import CDPPage from './pages/CDP'; // Add CDP import
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/abhyudaya" element={<AbhyudayaPage />} />
           <Route path="/magazine" element={<MagazinePage />} />
           <Route path="/about" element={<About />} />
+          <Route path="/cdp" element={<CDPPage />} /> {/* Add CDP route */}
         </Routes>
       </div>
     </Router>
