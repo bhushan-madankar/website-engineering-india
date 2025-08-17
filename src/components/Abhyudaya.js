@@ -153,14 +153,22 @@ const Abhyudaya = () => {
   className="absolute inset-0 z-0"
 />
 
-        <motion.h1
-          initial={{ scale: 0.7, opacity: 0, y: -70 }}
-          animate={{ scale: 1, opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: [0.17, 0.67, 0.83, 0.67] }} /* More refined ease */
-          className="text-7xl sm:text-8xl md:text-9xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-purple-900 tracking-tight mb-4 text-center drop-shadow-lg"
-        >
-          ABHYUDAYA
-        </motion.h1>
+       <motion.h1
+  initial={{ y: -100, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  transition={{
+    duration: 1,
+    ease: "easeOut"
+  }}
+  whileHover={{
+    scale: 1.1,
+    textShadow: "0px 0px 12px rgb(0,0,255)",
+    color: "#2563eb" // Tailwind blue-600
+  }}
+  className="text-9xl font-extrabold text-blue-800"
+>
+  ABHYUDAYA
+</motion.h1>
 
         <motion.p
           initial={{ y: 40, opacity: 0 }}
