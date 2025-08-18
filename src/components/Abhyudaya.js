@@ -7,26 +7,27 @@ import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 import {
   CodeBracketIcon,
   AcademicCapIcon,
-  PencilIcon,
   PaintBrushIcon,
   ChatBubbleBottomCenterTextIcon,
   PresentationChartBarIcon,
   MicrophoneIcon,
   BuildingLibraryIcon,
-} from '@heroicons/react/24/outline';
+  BookOpenIcon,   // ✅ Added for Lecture Series
+} from "@heroicons/react/24/solid";
+
 import { Navbar } from './Home';
 import { Footer } from './Magazine';
 
 // Define competition data with slightly more descriptive text for cards
 const competitions = [
-  { title: 'Hackathon', icon: <CodeBracketIcon className="h-10 w-10 text-blue-600 mb-3" />, description: "Code, innovate, and solve real-world problems in a high-energy environment." },
   { title: 'Ultimate Socio Technocrat', icon: <AcademicCapIcon className="h-10 w-10 text-green-600 mb-3" />, description: "Blend social awareness with technological solutions to drive meaningful change." },
-  { title: 'Drawing', icon: <PencilIcon className="h-10 w-10 text-orange-600 mb-3" />, description: "Unleash your artistic vision and express yourself through captivating strokes." },
-  { title: 'Painting', icon: <PaintBrushIcon className="h-10 w-10 text-red-600 mb-3" />, description: "Bring your imagination to life with vibrant colors and creative compositions." },
-  { title: 'Debate', icon: <ChatBubbleBottomCenterTextIcon className="h-10 w-10 text-purple-600 mb-3" />, description: "Sharpen your arguments and articulate your views on pressing topics." },
-  { title: 'Drama', icon: <PresentationChartBarIcon className="h-10 w-10 text-teal-600 mb-3" />, description: "Step onto the stage and captivate the audience with your dramatic flair." },
-  { title: 'Speech', icon: <MicrophoneIcon className="h-10 w-10 text-indigo-600 mb-3" />, description: "Command the stage with powerful words and inspiring rhetoric." },
+  { title: 'Treasure Hunt(AdvayShodh)', icon: <ChatBubbleBottomCenterTextIcon className="h-10 w-10 text-purple-600 mb-3" />, description: "An adventurous hunt combining riddles, clues, and problem-solving for the ultimate prize." },
+  { title: 'Pragyan Lecture Series', icon: <BookOpenIcon className="h-10 w-10 text-pink-600 mb-3" />, description: "Engage with experts, gain insights, and expand your knowledge through inspiring talks." },
   { title: 'Youth Parliament', icon: <BuildingLibraryIcon className="h-10 w-10 text-amber-600 mb-3" />, description: "Experience parliamentary proceedings and debate policies like a true leader." },
+  { title: 'Hackathon', icon: <CodeBracketIcon className="h-10 w-10 text-blue-600 mb-3" />, description: "Code, innovate, and solve real-world problems in a high-energy environment." },
+  { title: 'Drawing & Painting', icon: <PaintBrushIcon className="h-10 w-10 text-red-600 mb-3" />, description: "Unleash your creativity with strokes and colors that bring imagination to life." },
+  { title: 'Speech', icon: <MicrophoneIcon className="h-10 w-10 text-indigo-600 mb-3" />, description: "Command the stage with powerful words and inspiring rhetoric." },
+  { title: 'Drama', icon: <PresentationChartBarIcon className="h-10 w-10 text-teal-600 mb-3" />, description: "Step onto the stage and captivate the audience with your dramatic flair." },
 ];
 
 // Testimonial data with placeholder images
@@ -152,8 +153,7 @@ const Abhyudaya = () => {
   }}
   className="absolute inset-0 z-0"
 />
-
-       <motion.h1
+<motion.h1
   initial={{ y: -100, opacity: 0 }}
   animate={{ y: 0, opacity: 1 }}
   transition={{
@@ -161,14 +161,15 @@ const Abhyudaya = () => {
     ease: "easeOut"
   }}
   whileHover={{
-    scale: 1.1,
-    textShadow: "0px 0px 12px rgb(0,0,255)",
-    color: "#2563eb" // Tailwind blue-600
+    scale: 1.15,
+    textShadow: "0px 0px 20px rgba(37, 99, 235, 0.9)",
+    color: "#1d4ed8" // Tailwind blue-700
   }}
-  className="text-9xl font-extrabold text-blue-800"
+  className="text-9xl font-extrabold bg-gradient-to-r from-blue-500 via-blue-700 to-blue-900 text-transparent bg-clip-text drop-shadow-lg"
 >
   ABHYUDAYA
 </motion.h1>
+
 
         <motion.p
           initial={{ y: 40, opacity: 0 }}
@@ -198,20 +199,28 @@ const Abhyudaya = () => {
           transition={{ delay: 0.8, duration: 0.7, ease: "easeOut" }}
           className="flex flex-col sm:flex-row gap-5 mb-12"
         >
+         <a
+  href="https://www.instagram.com/reel/DCeC_p_g_Fm/?igsh=Zmx4ZmpyZ2FpaDVz"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <motion.button
+    whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(0, 0, 0, 0.25)" }}
+    whileTap={{ scale: 0.95 }}
+    className="px-10 py-4 bg-gradient-to-br from-blue-600 to-indigo-800 text-white font-bold rounded-full shadow-lg hover:from-blue-700 hover:to-indigo-900 transition-all duration-300 ease-in-out transform text-lg"
+  >
+    VIEW HIGHLIGHTS
+  </motion.button>
+</a>
+
           <motion.button
-            whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(0, 0, 0, 0.25)" }}
-            whileTap={{ scale: 0.95 }}
-            className="px-10 py-4 bg-gradient-to-br from-blue-600 to-indigo-800 text-white font-bold rounded-full shadow-lg hover:from-blue-700 hover:to-indigo-900 transition-all duration-300 ease-in-out transform text-lg"
-          >
-            VIEW HIGHLIGHTS
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(0, 0, 0, 0.15)" }}
-            whileTap={{ scale: 0.95 }}
-            className="px-10 py-4 border-2 border-blue-600 text-blue-700 font-bold rounded-full hover:bg-blue-600 hover:text-white transition-all duration-300 ease-in-out transform text-lg"
-          >
-            REGISTER NOW
-          </motion.button>
+              whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(0, 0, 0, 0.15)" }}
+              whileTap={{ scale: 0.95 }}
+              className="hidden px-10 py-4 border-2 border-blue-600 text-blue-700 font-bold rounded-full hover:bg-blue-600 hover:text-white transition-all duration-300 ease-in-out transform text-lg"
+>
+              REGISTER NOW
+         </motion.button>
+
         </motion.div>
 
         {/* About Section with improved readability and richer shadow */}
@@ -226,7 +235,7 @@ const Abhyudaya = () => {
             <strong className="text-blue-700">Abhyudaya</strong> is a collaborative social initiative conducted under the banner of Engineering India, where students
             from various engineering institutes across Nagpur come together to drive change and spread awareness on
             important social issues. This annual event fosters youth engagement through impactful campaigns, outreach
-            programs, and community-driven activities. With the support of <strong className="text-blue-700">250+ coordinators</strong> and participation from over
+            programs, and community-driven activities. With the support of <strong className="text-blue-700">300+ coordinators</strong> and participation from over
             <strong className="text-blue-700"> 2500 students</strong>, Abhyudaya is a testament to unity, compassion, and the shared spirit of responsibility among
             future engineers.
           </p>
@@ -295,44 +304,69 @@ const Abhyudaya = () => {
 
   {/* Description */}
   <motion.p
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.7, delay: 0.2 }}
-    className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto mb-12 leading-relaxed"
-  >
-    Celebrating the legacy of Indian Knowledge Systems through the lens of
-    <span className="font-semibold text-indigo-700"> Swami Vivekananda</span>, whose words ignited a spiritual renaissance,
-    and <span className="font-semibold text-orange-700"> Ahilyabai Holkar</span>, whose rule embodied dharma, equality, and devotion.
-    Their lives remind us that true wisdom lies in the unity of vision and action.
-  </motion.p>
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.7, delay: 0.2 }}
+  className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto mb-12 leading-relaxed"
+>
+  <span className="font-semibold text-indigo-700"></span>
+Wisdom and leadership in Engineering India stand for guiding young minds with values, vision, and responsibility. True leadership is not just about positions, but about serving society, uplifting peers, and working with unity of purpose. With the spirit of “Think Nationally, Act Locally,” we inspire students to lead with character, embrace right actions, and contribute to the nation’s growth through local impact. Through Abhyudaya, we strive to instill these values among our coordinators and participants, nurturing a community where knowledge meets responsibility, and leadership becomes a journey of service.
+</motion.p>
+
 
   {/* Icon Cards */}
-  <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-    {[
-      { label: "वेदान्त", emoji: "🕉️" },
-      { label: "राजधर्म", emoji: "⚖️" },
-      { label: "योग", emoji: "🧘‍♀️" },
-      { label: "नारीशक्ति", emoji: "🌼" }
-    ].map((item, index) => (
-      <motion.div
-        key={index}
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: index * 0.15 }}
-        whileHover={{ scale: 1.08, rotate: 1 }}
-        className="bg-gradient-to-br from-indigo-100 via-white to-orange-100 rounded-2xl shadow-md p-6 text-indigo-700 font-bold text-xl flex flex-col items-center"
-      >
-        <motion.span
-          animate={{ y: [0, -5, 0] }}
-          transition={{ repeat: Infinity, duration: 3 }}
-          className="text-4xl mb-3"
-        >
-          {item.emoji}
-        </motion.span>
-        {item.label}
-      </motion.div>
-    ))}
-  </div>
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+  {[
+    {
+      year: "2023",
+      name: "Swami Vivekanand, Awakening Youth, Inspiring Nation",
+      description: (
+        <>
+          <span className="font-bold">ABHYUDAYA 23</span> was celebrated with the guiding light of Swami Vivekananda, whose ideals of youth power, self-belief, and service to the nation continue to inspire us. His vision reminds us that true strength lies in character, knowledge, and dedication to society. Through this theme, we encouraged students to awaken their potential and contribute with the spirit of <span className="italic text-orange-700">“Arise, Awake, and Stop not till the goal is reached.”</span>
+        </>
+      ),
+    },
+    {
+      year: "2024",
+      name: "Ahilyabai Holkar, Indian Knowledge System",
+      description: (
+        <>
+          <span className="font-bold">ABHYUDAYA 24</span> celebrated the richness of the <span className="font-bold">Indian Knowledge System</span> and the inspiring legacy of Ahilyabai Holkar. The event highlighted the depth of India’s scientific, cultural, and philosophical wisdom while paying tribute to Ahilyabai’s visionary leadership, courage, and dedication to social welfare. Together, these themes reminded us to take pride in our roots, draw strength from our heritage, and lead with wisdom and compassion in building the future.
+        </>
+      ),
+    },
+    {
+      year: "2025",
+      name: "ABHYUDAYA 25 — Coming Soon",
+      description: (
+        <>
+          <span className="font-bold">ABHYUDAYA 25</span> is on the horizon! 🌟 Stay tuned for an exciting new theme that will continue our journey of cultural celebration, innovation, and inspiration. Something extraordinary is coming your way — get ready to be part of it! Stay Tunedd!!!
+        </>
+      ),
+    },
+  ].map((item, index) => (
+ <motion.div
+  key={index}
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, delay: index * 0.2 }}
+  whileHover={{ scale: 1.02 }}
+  className={`bg-gradient-to-br from-indigo-100 via-white to-orange-100 rounded-3xl shadow-lg p-6 text-gray-800 transition-all duration-300 ${
+    item.isCentered
+      ? "flex flex-col justify-center items-center text-center h-[300px] hover:shadow-2xl"
+      : "flex flex-col justify-between hover:shadow-2xl"
+  }`}
+>
+  <h3 className={`text-2xl font-extrabold text-blue-800 ${item.isCentered ? "" : "mb-3"}`}>
+    {item.name} ({item.year})
+  </h3>
+  <p className="text-base text-gray-700 leading-relaxed">{item.description}</p>
+</motion.div>
+
+  ))}
+</div>
+
+
 
   {/* 🔁 Continuous Horizontal Quote Sequence */}
  {/* 🔁 Horizontal Quote Ticker: Alternating Ahilyabai & Vivekananda */}
@@ -375,14 +409,20 @@ const Abhyudaya = () => {
 </div>
 
   {/* Footer Sanskrit Line */}
-  <motion.p
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 2 }}
-    className="mt-12 text-center text-xl italic text-gray-600 font-serif"
-  >
+<motion.div
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 2 }}
+  className="mt-12 text-center font-serif text-gray-700"
+>
+  <p className="text-2xl italic text-gray-800 mb-3">
     "विवेक दीपो विधेः पथप्रदः, करुणा छाया धर्मस्य दायिनी।"
-  </motion.p>
+  </p>
+  <p className="text-lg text-gray-600">
+    विवेक विधि का दीपक है, जो मार्ग दिखाता है; करुणा धर्म की छाया है, जो उसे फलित करती है।
+  </p>
+</motion.div>
+
 </section>
 
       {/* Competitions Section */}
@@ -594,7 +634,7 @@ const Abhyudaya = () => {
         >
           {[
             { number: "2500+", label: "Participants" },
-            { number: "250+", label: "Coordinators" },
+            { number: "300+", label: "Coordinators" },
             { number: "8", label: "Competitions" },
             { number: "13", label: "Years Strong" }
           ].map((stat, index) => (
@@ -735,33 +775,31 @@ const Abhyudaya = () => {
 
           {timelineData.map((item, index) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -120 : 120 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.8, delay: index * 0.25, ease: [0.17, 0.67, 0.83, 0.67] }} /* Smoother ease */
-              className={`mb-16 flex items-center justify-between w-full ${
-                index % 2 === 0 ? "flex-row-reverse md:flex-row" : "flex-row"
-              }`}
-            >
-              {/* Spacer for alignment on smaller screens */}
-              <div className="hidden md:block w-5/12"></div>
+  key={index}
+  initial={{ opacity: 0, x: index % 2 === 0 ? -120 : 120 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  viewport={{ once: true, amount: 0.5 }}
+  transition={{ duration: 0.8, delay: index * 0.25, ease: [0.17, 0.67, 0.83, 0.67] }}
+  className={`mb-16 flex items-center w-full ${
+    index % 2 === 0 ? "md:flex-row-reverse flex-col" : "md:flex-row flex-col"
+  }`}
+>
+  {/* Spacer for alignment on desktop */}
+  <div className="hidden md:block w-5/12"></div>
 
-              {/* 🔵 Dot Marker - Larger and more visually distinct */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-blue-600 rounded-full border-5 border-white shadow-xl z-10 flex items-center justify-center">
-                <span className="text-white text-sm font-extrabold">{item.year.slice(2)}</span>
-              </div>
+ 
 
-              {/* 📝 Content Card - More refined shadow and border */}
-              <div className={`w-full md:w-5/12 bg-white/95 rounded-3xl shadow-xl p-7 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border border-blue-200 transform hover:scale-[1.02] ${
-                index % 2 === 0 ? "text-right md:text-left" : "text-left"
-              }`}>
-                <h3 className="text-2xl font-bold text-blue-800 mb-3">
-                  {item.title} (<span className="text-blue-600">{item.year}</span>)
-                </h3>
-                <p className="text-base text-gray-700 leading-relaxed">{item.desc}</p>
-              </div>
-            </motion.div>
+  {/* Content Card */}
+  <div className={`w-full md:w-5/12 bg-white/95 rounded-3xl shadow-xl p-7 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 border border-blue-200 transform hover:scale-[1.02] ${
+    index % 2 === 0 ? "text-right md:text-left" : "text-left"
+  }`}>
+    <h3 className="text-2xl font-bold text-blue-800 mb-3">
+      {item.title} (<span className="text-blue-600">{item.year}</span>)
+    </h3>
+    <p className="text-base text-gray-700 leading-relaxed">{item.desc}</p>
+  </div>
+</motion.div>
+
           ))}
         </div>
       </section>
