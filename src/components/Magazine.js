@@ -4,8 +4,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Navbar } from "./Home";
 import {
-  Facebook,
-  Twitter,
+  // Facebook,
+  // Twitter,
   Instagram,
   Linkedin,
 } from "lucide-react";
@@ -338,8 +338,8 @@ const Footer = () => {
           {/* Social Media Icons */}
           <div className="flex justify-center space-x-6 mt-2 animate-fadeInUp delay-300">
             {[
-              { Icon: Facebook, name: "Facebook", color: "hover:bg-blue-600", link: "https://facebook.com/yourpage" },
-              { Icon: Twitter, name: "Twitter", color: "hover:bg-blue-400", link: "https://twitter.com/yourhandle" },
+              // { Icon: Facebook, name: "Facebook", color: "hover:bg-blue-600", link: "https://facebook.com/yourpage" },
+              // { Icon: Twitter, name: "Twitter", color: "hover:bg-blue-400", link: "https://twitter.com/yourhandle" },
               { Icon: Instagram, name: "Instagram", color: "hover:bg-pink-600", link: "https://www.instagram.com/engineering_india2047?igsh=MTNpaWthOWRvajI4eA==" },
               { Icon: Linkedin, name: "LinkedIn", color: "hover:bg-blue-700", link: "https://www.linkedin.com/company/engineeringindia-2047/" }
             ].map(({ Icon, name, color, link }, i) => (
