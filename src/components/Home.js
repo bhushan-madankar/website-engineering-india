@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaUsers, FaUniversity, FaGraduationCap, FaHandshake, FaBars, FaTimes } from "react-icons/fa";
-
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import { Instagram } from "lucide-react";
+
 const images = [
   "/images/aboutpage.avif",
   "/images/image2.png",
   "/images/image3.png",
   "/images/RASHTRABHIMAN.avif",
 ];
+
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: (i = 1) => ({
@@ -20,6 +21,7 @@ const fadeUp = {
     transition: { delay: i * 0.2, duration: 0.6, ease: "easeOut" }
   })
 };
+
 const Page = () => {
   const [init, setInit] = useState(false);
 
@@ -462,7 +464,25 @@ const MobileImageSlider = () => {
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState('home');
+  const location = useLocation(); // Get current location from React Router
+
+  // Function to get the active page based on current route
+  const getActivePage = (route) => {
+    return location.pathname === route;
+  };
+
+  // Function to get route identifier for highlighting
+  const getRouteId = (route) => {
+    switch(route) {
+      case '/': return 'home';
+      case '/clgsec': return 'ourcolleges';
+      case '/about': return 'aboutus';
+      case '/abhyudaya': return 'abhyudaya';
+      case '/cdp': return 'cdp';
+      case '/magazine': return 'magazine';
+      default: return '';
+    }
+  };
 
   // Updated navItems array - removed external CDP link
   const navItems = [
@@ -470,7 +490,7 @@ const Navbar = () => {
     { name: "Our Colleges", route: "/clgsec", fileName: "ClgSec.js" },
     { name: "About Us", route: "/about", fileName: "About.js" },
     { name: "Abhyudaya", route: "/abhyudaya", fileName: "Abhyudaya.js" },
-    { name: "CDP", route: "/cdp", fileName: "CDP.js" }, // Changed to internal route
+    { name: "CDP", route: "/cdp", fileName: "CDP.js" },
     { name: "Magazine", route: "/magazine", fileName: "Magazine.js" }
   ];
 
@@ -481,7 +501,7 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-2">
           {/* Logo */}
           <div className="flex items-center">
-            <Link to="/" onClick={() => setCurrentPage('home')}>
+            <Link to="/">
               <img
                 src="/images/logo.png"
                 alt="Engineering India"
@@ -504,15 +524,15 @@ const Navbar = () => {
               {navItems.map((item, idx) => (
                 <li
                   key={idx}
-                  className={`cursor-pointer font-medium transition-all duration-300 hover:scale-105 relative group ${currentPage === item.name.toLowerCase().replace(' ', '')
+                  className={`cursor-pointer font-medium transition-all duration-300 hover:scale-105 relative group ${getActivePage(item.route)
                     ? 'text-indigo-600'
                     : 'text-gray-700 hover:text-indigo-600'
                     }`}
                 >
-                  <Link to={item.route} onClick={() => setCurrentPage(item.name.toLowerCase().replace(' ', ''))}>
+                  <Link to={item.route}>
                     {item.name}
                   </Link>
-                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 transition-all duration-300 ${currentPage === item.name.toLowerCase().replace(' ', '')
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 transition-all duration-300 ${getActivePage(item.route)
                     ? 'w-full'
                     : 'w-0 group-hover:w-full'
                     }`}></span>
@@ -522,12 +542,13 @@ const Navbar = () => {
 
             <a
               href="https://www.instagram.com/engineering_india2047?igsh=MTNpaWthOWRvajI4eA=="
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 text-white text-[18px] font-medium rounded-[30px] bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 px-[1.5em] py-[0.6em] shadow-lg hover:scale-105 active:scale-95 transition-all duration-300"
             >
               <Instagram className="w-5 h-5" />
               Instagram
             </a>
-
           </div>
         </div>
 
@@ -540,10 +561,12 @@ const Navbar = () => {
                   <Link
                     to={item.route}
                     onClick={() => {
-                      setCurrentPage(item.name.toLowerCase().replace(' ', ''));
                       setMobileMenuOpen(false);
                     }}
-                    className="text-lg font-medium text-gray-700 hover:text-indigo-600 transition-colors duration-300"
+                    className={`text-lg font-medium transition-colors duration-300 ${getActivePage(item.route)
+                      ? 'text-indigo-600'
+                      : 'text-gray-700 hover:text-indigo-600'
+                      }`}
                   >
                     {item.name}
                   </Link>
@@ -553,16 +576,17 @@ const Navbar = () => {
 
             <a
               href="https://www.instagram.com/engineering_india2047?igsh=MTNpaWthOWRvajI4eA=="
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 text-white text-[1.2rem] font-medium rounded-[30px] bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 px-6 py-3 shadow-lg hover:scale-105 active:scale-95 transition-all duration-300"
+              onClick={() => setMobileMenuOpen(false)}
             >
               <Instagram className="w-6 h-6" />
               Instagram
             </a>
-
           </div>
         )}
       </nav>
-
     </>
   );
 };

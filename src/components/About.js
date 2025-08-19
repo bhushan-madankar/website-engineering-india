@@ -54,7 +54,7 @@ const AboutPage = () => {
       <section className="py-12 px-4 relative">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-[#1d0e4e] animate-fadeInUp bg-gradient-to-r from-[#1d0e4e] via-[#2d1e5e] to-[#1d0e4e] bg-clip-text text-transparent">
-            Our Journey
+            Club Memories
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {journeyImages.map((item, i) => (
@@ -267,8 +267,8 @@ const AboutPage = () => {
   );
 };
 const journeyImages = [
-  { src: '/images/abhyu.avif', title: 'Abhyudaya', subtitle: 'Event' },
-  { src: '/images/vriksh.jpg', title: 'vriksh ropan', subtitle: 'Event' },
+  { src: '/images/chikhal.jpg', title: 'Chikaldhara Visit', subtitle: 'Event' },
+  { src: '/images/vriksh.jpg', title: 'Vriksha ropan', subtitle: 'Event' },
   { src: '/images/event.jpg', title: 'Abhyudaya', subtitle: 'Event' }
 ];
 

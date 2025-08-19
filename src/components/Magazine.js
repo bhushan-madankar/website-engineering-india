@@ -4,8 +4,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Navbar } from "./Home";
 import {
-  // Facebook,
-  // Twitter,
   Instagram,
   Linkedin,
 } from "lucide-react";
@@ -150,6 +148,11 @@ const Magazines = () => {
     window.location.href = link;
   };
 
+  // Handle full magazine PDF opening
+  const handleFullMagazineClick = () => {
+    window.location.href = "/articles/magazine.pdf";
+  };
+
   return (
     <>
       {/* Include the navbar */}
@@ -187,6 +190,8 @@ const Magazines = () => {
                 Discover stories of <span className="text-[#ea7707] font-bold">Innovation</span>, celebrate <span className="text-[#138808] font-bold">Excellence</span>, and explore the future of engineering
               </p>
             </AnimatedSection>
+
+
           </AnimatedSection>
         </div>
 
@@ -282,21 +287,89 @@ const Magazines = () => {
               </p>
               <AnimatedSection direction="left" delay={200} className="bg-white rounded-3xl shadow-xl p-10 border border-gray-100">
                 <div className="bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0] rounded-2xl p-8">
-                  <AnimatedSection direction="right" delay={400} className="flex items-center mb-6">
-                    <div className="w-12 h-12 bg-gradient-to-r from-[#ea7707] to-[#fe9124] rounded-full flex items-center justify-center mr-4">
-                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                      </svg>
-                    </div>
-                    <h3 className="text-2xl font-bold text-[#1d0e4e]">Inspiring Excellence</h3>
-                  </AnimatedSection>
-                  <AnimatedSection direction="up" delay={600}>
-                    <p className="text-lg leading-relaxed text-gray-700 mb-6">
-                      Dive into stories that celebrate innovation, capture youth spirit, and spotlight technological brilliance from across Vidarbha. Whether you're looking for inspiration, student achievements, or the future of engineering, this issue has something for everyone.
-                    </p>
-                    <p className="text-lg leading-relaxed text-gray-700">
+                  <AnimatedSection direction="up" delay={400}>
+                    <p className="text-lg leading-relaxed text-gray-700 mb-8">
                       Join us in amplifying the voices shaping India's engineering future. Be curious, be inspired — and discover the full spectrum in the complete issue.
                     </p>
+                    
+                    {/* Structured feature sections */}
+                    <div className="space-y-6">
+                      {/* Inspiring Excellence */}
+                      <AnimatedSection direction="up" delay={500} className="bg-white/50 rounded-xl p-6">
+                        <h4 className="text-xl font-bold text-black mb-4">Inspiring Excellence</h4>
+                        <div className="space-y-2 text-black">
+                          <p className="flex items-start">
+                            <span className="w-2 h-2 bg-black rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            Dive into stories that celebrate innovation, capture youth spirit, and spotlight technological brilliance from across Vidarbha.
+                          </p>
+                          <p className="flex items-start">
+                            <span className="w-2 h-2 bg-black rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            Whether you're looking for inspiration, student achievements, or the future of engineering, this issue has something for everyone.
+                          </p>
+                        </div>
+                      </AnimatedSection>
+
+                      {/* Dive into Stories that Matter */}
+                      <AnimatedSection direction="up" delay={600} className="bg-white/50 rounded-xl p-6">
+                        <h4 className="text-xl font-bold text-black mb-4">Dive into Stories that Matter</h4>
+                        <div className="space-y-2 text-black">
+                          <p className="flex items-start">
+                            <span className="w-2 h-2 bg-black rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            Explore inspiring narratives of innovation emerging from Vidarbha, where ideas meet execution.
+                          </p>
+                          <p className="flex items-start">
+                            <span className="w-2 h-2 bg-black rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            Discover breakthroughs and creative projects that redefine what young minds can achieve.
+                          </p>
+                        </div>
+                      </AnimatedSection>
+
+                      {/* Celebrating Youth Spirit */}
+                      <AnimatedSection direction="up" delay={700} className="bg-white/50 rounded-xl p-6">
+                        <h4 className="text-xl font-bold text-black mb-4">Celebrating Youth Spirit</h4>
+                        <div className="space-y-2 text-black">
+                          <p className="flex items-start">
+                            <span className="w-2 h-2 bg-black rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            Get inspired by the energy, enthusiasm, and determination of students leading change.
+                          </p>
+                          <p className="flex items-start">
+                            <span className="w-2 h-2 bg-black rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            Read about real stories of perseverance, problem-solving, and leadership in engineering.
+                          </p>
+                        </div>
+                      </AnimatedSection>
+
+                      {/* Spotlight on Technological Brilliance */}
+                      <AnimatedSection direction="up" delay={800} className="bg-white/50 rounded-xl p-6">
+                        <h4 className="text-xl font-bold text-black mb-4">Spotlight on Technological Brilliance</h4>
+                        <div className="space-y-2 text-black">
+                          <p className="flex items-start">
+                            <span className="w-2 h-2 bg-black rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            Witness cutting-edge technologies and solutions developed by future engineers.
+                          </p>
+                          <p className="flex items-start">
+                            <span className="w-2 h-2 bg-black rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            Learn how these advancements are shaping industries, communities, and education.
+                          </p>
+                        </div>
+                      </AnimatedSection>
+                    </div>
+                    
+                    {/* Read Full Magazine Button */}
+                    <AnimatedSection direction="scale" delay={900} className="text-center mt-10">
+                      <button
+                        onClick={handleFullMagazineClick}
+                        className="inline-flex items-center bg-gradient-to-r from-[#ea7707] to-[#fe9124] text-white px-8 py-4 rounded-full font-bold text-lg hover:from-[#fe9124] hover:to-[#ea7707] transition-all duration-300 shadow-2xl hover:shadow-3xl transform hover:scale-110"
+                      >
+                        <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                        Read Full Magazine
+                        <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </button>
+                    </AnimatedSection>
                   </AnimatedSection>
                 </div>
               </AnimatedSection>
@@ -338,8 +411,6 @@ const Footer = () => {
           {/* Social Media Icons */}
           <div className="flex justify-center space-x-6 mt-2 animate-fadeInUp delay-300">
             {[
-              // { Icon: Facebook, name: "Facebook", color: "hover:bg-blue-600", link: "https://facebook.com/yourpage" },
-              // { Icon: Twitter, name: "Twitter", color: "hover:bg-blue-400", link: "https://twitter.com/yourhandle" },
               { Icon: Instagram, name: "Instagram", color: "hover:bg-pink-600", link: "https://www.instagram.com/engineering_india2047?igsh=MTNpaWthOWRvajI4eA==" },
               { Icon: Linkedin, name: "LinkedIn", color: "hover:bg-blue-700", link: "https://www.linkedin.com/company/engineeringindia-2047/" }
             ].map(({ Icon, name, color, link }, i) => (

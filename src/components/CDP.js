@@ -91,7 +91,7 @@ const CDP = () => {
     {
       id: 2,
       title: "LinkedIn & Resume Building Workshop",
-      image: "/images/i6.jpg",
+      image: "/images/i4.jpg",
       date: "12th January 2025 (National Youth Day)",
       location: "Online Session",
       participants: 60,
@@ -103,7 +103,7 @@ const CDP = () => {
     {
       id: 3,
       title: "Group Discussion Workshop",
-      image: "/images/i4.jpg",
+      image: "/images/i6.jpg",
       date: "2nd February 2025",
       location: "Seva Sadan, Nagpur",
       participants: 30,
@@ -112,42 +112,7 @@ const CDP = () => {
         "Organized a Group Discussion workshop at Seva Sadan, Nagpur. The event focused on enhancing soft skills, communication abilities, and critical thinking among engineering students through structured group activities.",
       highlights: ["Soft Skills Development", "Communication Skills", "Critical Thinking", "Individual Reviews"],
     },
-    {
-      id: 4,
-      title: "Tech Foundation Workshop",
-      image: "/images/i5.jpeg",
-      date: "9th February 2025",
-      location: "Sevasadan Shikshan Sanstha, Nagpur",
-      participants: 35,
-      duration: "Full Day",
-      description:
-        "Engineering India organized a Tech Foundation Workshop at Sevasadan Shikshan Sanstha, Nagpur. The workshop covered fundamental technologies and their cutting-edge applications in modern engineering.",
-      highlights: ["Technology Fundamentals", "Cutting-edge Applications", "Industry Expert Guidance", "Hands-on Learning"],
-    },
-    {
-      id: 5,
-      title: "Online Excel Workshop by Mr. Nirav Murarka",
-      image: "/images/i2.jpg",
-      date: "16th February 2025",
-      location: "Online Session",
-      participants: 40,
-      duration: "3 hours",
-      description:
-        "An online MS Excel Workshop was conducted by Mr. Nirav Murarka under the Engineering India CDP. The session covered advanced Excel techniques essential for professional and academic excellence.",
-      highlights: ["Excel Formulas & Functions", "Pivot Tables", "Data Analysis", "Professional Skills"],
-    },
-    {
-      id: 6,
-      title: "GitHub Workshop by Mr. Kunal Parkhede",
-      image: "/images/i3.jpg",
-      date: "16th February 2025",
-      location: "Online Session",
-      participants: 50,
-      duration: "2 hours",
-      description:
-        "An online GitHub Workshop was conducted by Mr. Kunal Parkhede for II and III year students. The session introduced version control concepts and collaborative development practices essential for modern software engineering.",
-      highlights: ["Git & GitHub Basics", "Version Control", "Collaboration", "Open Source Contributions"],
-    },
+    
   ];
 
   // Auto-play slideshow
