@@ -568,10 +568,10 @@ const Navbar = () => {
 };
 
 const stats = [
-  { label: "Coordinators", value: "250+", icon: <FaUsers size={45} />, color: "from-blue-500 to-blue-600" },
-  { label: "Colleges Collaborated", value: "5+", icon: <FaUniversity size={45} />, color: "from-green-500 to-green-600" },
+  { label: "Coordinators", value: "300+", icon: <FaUsers size={45} />, color: "from-blue-500 to-blue-600" },
+  { label: "Colleges Collaborated", value: "8+", icon: <FaUniversity size={45} />, color: "from-green-500 to-green-600" },
   { label: "Alumni Chapters", value: "15+", icon: <FaGraduationCap size={45} />, color: "from-purple-500 to-purple-600" },
-  { label: "Volunteers", value: "250+", icon: <FaHandshake size={45} />, color: "from-orange-500 to-orange-600" },
+  { label: "Volunteers", value: "500+", icon: <FaHandshake size={45} />, color: "from-orange-500 to-orange-600" },
 ];
 
 const StatsSection = () => {
