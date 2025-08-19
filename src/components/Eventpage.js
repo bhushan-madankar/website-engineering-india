@@ -16,8 +16,8 @@ const EventsPage = () => {
     },
     {
       id: 3,
-      title: "Fun Trip - A Day to Unwind and Explore",
-      description: "Our Club organized a memorable Fun Trip filled with laughter, bonding, and adventure. It was the perfect blend of relaxation and fun, strengthening camaraderie and team spirit.",
+      title: "Seva Sankalp - A Day to Unwind and Explore",
+      description: "Our Club organized a memorable Seva Sankalp trip filled with laughter, bonding, and adventure. It was the perfect blend of relaxation and fun, strengthening camaraderie and team spirit.",
       image: '/images/chikhal.jpg'
     },
     {
