@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaUsers, FaUniversity, FaGraduationCap, FaHandshake, FaBars, FaTimes } from "react-icons/fa";
-import { FaUser, FaEnvelope, FaPhone } from 'react-icons/fa';
+
 import { Link } from 'react-router-dom';
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-
+import { Instagram } from "lucide-react";
 const images = [
   "/images/aboutpage.avif",
   "/images/image2.png",
@@ -36,7 +36,7 @@ const Page = () => {
       <Navbar />
 
       <div className="bg-[rgba(210, 230, 250, 0.4)] backdrop-blur-xs min-h-screen text-gray-800 pt-18 relative overflow-hidden">
-        
+
         {/* Interactive Particles Background */}
         {init && (
           <Particles
@@ -462,73 +462,7 @@ const MobileImageSlider = () => {
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [joinModalOpen, setJoinModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState('home');
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    college: '',
-    year: '',
-    interest: ''
-  });
-  const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
-  };
-
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = 'Name is required';
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
-      newErrors.email = 'Invalid email format';
-    }
-    if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number is required';
-    } else if (!/^\d{10}$/.test(formData.phone)) {
-      newErrors.phone = 'Phone number must be 10 digits';
-    }
-    if (!formData.college.trim()) newErrors.college = 'College is required';
-    if (!formData.year.trim()) newErrors.year = 'Year is required';
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validateForm()) {
-      setIsSubmitting(true);
-      // Simulate API call
-      setTimeout(() => {
-        console.log('Form submitted:', formData);
-        setIsSubmitting(false);
-        setSubmitSuccess(true);
-        // Reset form after successful submission
-        setTimeout(() => {
-          setSubmitSuccess(false);
-          setFormData({
-            name: '',
-            email: '',
-            phone: '',
-            college: '',
-            year: '',
-            interest: ''
-          });
-          setJoinModalOpen(false);
-        }, 2000);
-      }, 1500);
-    }
-  };
 
   // Updated navItems array - removed external CDP link
   const navItems = [
@@ -586,13 +520,14 @@ const Navbar = () => {
               ))}
             </ul>
 
-            {/* Join Us Button */}
-            <button
-              onClick={() => setJoinModalOpen(true)}
-              className="relative text-[#f8f5f5] text-[18px] font-medium rounded-[30px] bg-[#0d023b] border border-[#e8e8e8] shadow-[6px_6px_12px_#c5c5c5,_-6px_-6px_12px_#ffffff] px-[1.5em] py-[0.6em] min-h-[3vh] overflow-hidden z-10 hover:text-white hover:border-[#009087] hover:scale-105 active:text-[#666] active:shadow-[inset_4px_4px_12px_#53f0d3,_inset_-4px_-4px_12px_#53f0d3] transition-all duration-300"
+            <a
+              href="https://www.instagram.com/engineering_india2047?igsh=MTNpaWthOWRvajI4eA=="
+              className="flex items-center gap-2 text-white text-[18px] font-medium rounded-[30px] bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 px-[1.5em] py-[0.6em] shadow-lg hover:scale-105 active:scale-95 transition-all duration-300"
             >
-              Join Us
-            </button>
+              <Instagram className="w-5 h-5" />
+              Instagram
+            </a>
+
           </div>
         </div>
 
@@ -602,11 +537,11 @@ const Navbar = () => {
             <ul className="flex flex-col gap-8 list-none">
               {navItems.map((item, idx) => (
                 <li key={idx} className="text-center">
-                  <Link 
-                    to={item.route} 
-                    onClick={() => { 
-                      setCurrentPage(item.name.toLowerCase().replace(' ', '')); 
-                      setMobileMenuOpen(false); 
+                  <Link
+                    to={item.route}
+                    onClick={() => {
+                      setCurrentPage(item.name.toLowerCase().replace(' ', ''));
+                      setMobileMenuOpen(false);
                     }}
                     className="text-lg font-medium text-gray-700 hover:text-indigo-600 transition-colors duration-300"
                   >
@@ -616,186 +551,18 @@ const Navbar = () => {
               ))}
             </ul>
 
-            <button
-              onClick={() => {
-                setJoinModalOpen(true);
-                setMobileMenuOpen(false);
-              }}
-              className="text-[#f8f5f5] text-[1.2rem] font-medium rounded-[30px] bg-[#0d023b] px-6 py-3 transition-all duration-300 hover:bg-[#0d023b]/90"
+            <a
+              href="https://www.instagram.com/engineering_india2047?igsh=MTNpaWthOWRvajI4eA=="
+              className="flex items-center gap-2 text-white text-[1.2rem] font-medium rounded-[30px] bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 px-6 py-3 shadow-lg hover:scale-105 active:scale-95 transition-all duration-300"
             >
-              Join Us
-            </button>
+              <Instagram className="w-6 h-6" />
+              Instagram
+            </a>
+
           </div>
         )}
       </nav>
 
-      {/* Join Us Modal */}
-      {joinModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
-          <div className="relative bg-white rounded-xl shadow-2xl w-full max-w-md mx-4 overflow-hidden">
-            <button
-              onClick={() => setJoinModalOpen(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors z-10"
-            >
-              <FaTimes className="text-xl" />
-            </button>
-
-            <div className="p-6">
-              <h2 className="text-2xl font-bold text-center text-[#0d023b] mb-6">
-                Join Engineering India
-              </h2>
-
-              {submitSuccess ? (
-                <div className="text-center py-8">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
-                    <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">Application Submitted!</h3>
-                  <p className="text-gray-600">We'll get back to you soon.</p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit}>
-                  <div className="space-y-4">
-                    {/* Name Field */}
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Full Name
-                      </label>
-                      <div className="relative">
-                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                          <FaUser className="text-gray-400" />
-                        </div>
-                        <input
-                          type="text"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleInputChange}
-                          className={`pl-10 block w-full rounded-md border ${errors.name ? 'border-red-500' : 'border-gray-300'} shadow-sm py-2 px-3 focus:outline-none focus:ring-2 focus:ring-[#0d023b] focus:border-[#0d023b]`}
-                          placeholder="Your full name"
-                        />
-                      </div>
-                      {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
-                    </div>
-
-                    {/* Email Field */}
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Email Address
-                      </label>
-                      <div className="relative">
-                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                          <FaEnvelope className="text-gray-400" />
-                        </div>
-                        <input
-                          type="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          className={`pl-10 block w-full rounded-md border ${errors.email ? 'border-red-500' : 'border-gray-300'} shadow-sm py-2 px-3 focus:outline-none focus:ring-2 focus:ring-[#0d023b] focus:border-[#0d023b]`}
-                          placeholder="your.email@example.com"
-                        />
-                      </div>
-                      {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
-                    </div>
-
-                    {/* Phone Field */}
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Phone Number
-                      </label>
-                      <div className="relative">
-                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                          <FaPhone className="text-gray-400" />
-                        </div>
-                        <input
-                          type="tel"
-                          name="phone"
-                          value={formData.phone}
-                          onChange={handleInputChange}
-                          className={`pl-10 block w-full rounded-md border ${errors.phone ? 'border-red-500' : 'border-gray-300'} shadow-sm py-2 px-3 focus:outline-none focus:ring-2 focus:ring-[#0d023b] focus:border-[#0d023b]`}
-                          placeholder="9876543210"
-                        />
-                      </div>
-                      {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
-                    </div>
-
-                    {/* College Field */}
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        College/University
-                      </label>
-                      <input
-                        type="text"
-                        name="college"
-                        value={formData.college}
-                        onChange={handleInputChange}
-                        className={`block w-full rounded-md border ${errors.college ? 'border-red-500' : 'border-gray-300'} shadow-sm py-2 px-3 focus:outline-none focus:ring-2 focus:ring-[#0d023b] focus:border-[#0d023b]`}
-                        placeholder="Your college name"
-                      />
-                      {errors.college && <p className="mt-1 text-sm text-red-600">{errors.college}</p>}
-                    </div>
-
-                    {/* Year Field */}
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Year of Study
-                      </label>
-                      <select
-                        name="year"
-                        value={formData.year}
-                        onChange={handleInputChange}
-                        className={`block w-full rounded-md border ${errors.year ? 'border-red-500' : 'border-gray-300'} shadow-sm py-2 px-3 focus:outline-none focus:ring-2 focus:ring-[#0d023b] focus:border-[#0d023b]`}
-                      >
-                        <option value="">Select your year</option>
-                        <option value="First Year">First Year</option>
-                        <option value="Second Year">Second Year</option>
-                        <option value="Third Year">Third Year</option>
-                        <option value="Final Year">Final Year</option>
-                      </select>
-                      {errors.year && <p className="mt-1 text-sm text-red-600">{errors.year}</p>}
-                    </div>
-
-                    {/* Interests Field */}
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Areas of Interest (Optional)
-                      </label>
-                      <textarea
-                        name="interest"
-                        value={formData.interest}
-                        onChange={handleInputChange}
-                        rows={3}
-                        className="block w-full rounded-md border border-gray-300 shadow-sm py-2 px-3 focus:outline-none focus:ring-2 focus:ring-[#0d023b] focus:border-[#0d023b]"
-                        placeholder="Technical, cultural, social work, etc."
-                      />
-                    </div>
-                  </div>
-
-                  <div className="mt-6">
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#0d023b] hover:bg-[#0d023b]/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0d023b] transition-colors duration-300 disabled:opacity-70"
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                          </svg>
-                          Submitting...
-                        </>
-                      ) : 'Submit Application'}
-                    </button>
-                  </div>
-                </form>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 };

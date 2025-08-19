@@ -11,6 +11,7 @@ const CollegesSection = () => {
       shortName: "COEP",
       logo: "🏛️",
       socialMedia: "@engineering_india_ccewn",
+      instagramUrl: "https://www.instagram.com/engineering_india_ccewn?igsh=YXNycjdvOTdwZThr",
       color: "bg-gradient-to-br from-slate-50 to-gray-100",
       borderColor: "border-rose-300",
       accentColor: "rose",
@@ -22,6 +23,7 @@ const CollegesSection = () => {
       shortName: "RBU",
       logo: "🎓",
       socialMedia: "@engineeringindia_rbu",
+      instagramUrl: "https://www.instagram.com/engineeringindia_rbu?igsh=YXNycjdvOTdwZThr",
       color: "bg-gradient-to-br from-slate-50 to-gray-100",
       borderColor: "border-emerald-300",
       accentColor: "emerald",
@@ -33,6 +35,7 @@ const CollegesSection = () => {
       shortName: "YCCE",
       logo: "⚡",
       socialMedia: "@engineering.india_ycce",
+      instagramUrl: "https://www.instagram.com/engineering.india_ycce?igsh=YXNycjdvOTdwZThr",
       color: "bg-gradient-to-br from-slate-50 to-gray-100",
       borderColor: "border-amber-300",
       accentColor: "amber",
@@ -44,6 +47,7 @@ const CollegesSection = () => {
       shortName: "RAISONI",
       logo: "🚀",
       socialMedia: "@engineering_india.raisoni",
+      instagramUrl: "https://www.instagram.com/engineering_india.raisoni?igsh=YXNycjdvOTdwZThr",
       color: "bg-gradient-to-br from-slate-50 to-gray-100",
       borderColor: "border-violet-300",
       accentColor: "violet",
@@ -55,6 +59,7 @@ const CollegesSection = () => {
       shortName: "PALLOTTI",
       logo: "⭐",
       socialMedia: "@engineering.india_svpcet",
+      instagramUrl: "https://www.instagram.com/engineering.india_svpcet?igsh=YXNycjdvOTdwZThr",
       color: "bg-gradient-to-br from-slate-50 to-gray-100",
       borderColor: "border-sky-300",
       accentColor: "sky",
@@ -66,17 +71,19 @@ const CollegesSection = () => {
       shortName: "KDK",
       logo: "💎",
       socialMedia: "@engineering.india_kdkce",
+      instagramUrl: "https://www.instagram.com/engineering.india_kdkce?igsh=YXNycjdvOTdwZThr",
       color: "bg-gradient-to-br from-slate-50 to-gray-100",
       borderColor: "border-yellow-300",
       accentColor: "yellow",
       description: "Crafting Precious Minds",
-      image: "https://images.unsplash.com/photo-1576495199011-eb94736d05d6?w=400&h=300&fit=crop&crop=center"
+      image: "./images/event.jpg"
     },
     {
       name: "Priyadarshini College of Engineering",
       shortName: "PRIYADARSHINI",
       logo: "🌟",
       socialMedia: "@engineering_india_pce",
+      instagramUrl: "https://www.instagram.com/engineering_india_pce?igsh=YXNycjdvOTdwZThr",
       color: "bg-gradient-to-br from-slate-50 to-gray-100",
       borderColor: "border-indigo-300",
       accentColor: "indigo",
@@ -92,7 +99,6 @@ const CollegesSection = () => {
     }, 5000);
     return () => clearInterval(interval);
   }, []);
-
   return (
     <div
       className="min-h-screen py-20 px-6 relative overflow-hidden mt-24"
@@ -161,18 +167,15 @@ const CollegesSection = () => {
               <div className="space-y-5 mb-8">
                 <div className="bg-white/60 rounded-xl p-4 backdrop-blur-sm border border-white/30 hover:bg-white/70 transition-all duration-300">
                   <div className="flex items-center text-gray-700">
-                    <Users className="w-5 h-5 mr-3 text-gray-600" />
-                    <div>
-                      <span className="font-bold text-lg">Engineering Team</span>
-                      <p className="text-xs text-gray-500">Active Community</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="bg-white/60 rounded-xl p-4 backdrop-blur-sm border border-white/30 hover:bg-white/70 transition-all duration-300">
-                  <div className="flex items-center text-gray-700">
                     <Globe className="w-5 h-5 mr-3 text-gray-600" />
                     <div>
-                      <span className="font-bold text-lg">{college.socialMedia}</span>
+                      <a
+                        href={college.instagramUrl}
+
+                        className="font-bold text-lg text-indigo-600 hover:underline"
+                      >
+                        {college.socialMedia}
+                      </a>
                       <p className="text-xs text-gray-500">Social Media Handle</p>
                     </div>
                   </div>
@@ -200,16 +203,16 @@ const CollegesSection = () => {
         {/* Enhanced Stats Section */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
           {[
-            { label: "Premier Colleges", value: "8", icon: <BookOpen className="w-8 h-8" />, color: "from-pink-200 to-rose-300", textColor: "text-rose-700" },
-            { label: "Engineering Teams", value: "8", icon: <Users className="w-8 h-8" />, color: "from-blue-200 to-sky-300", textColor: "text-sky-700" },
-            { label: "Campus Locations", value: "8", icon: <Globe className="w-8 h-8" />, color: "from-green-200 to-emerald-300", textColor: "text-emerald-700" },
-            { label: "Social Channels", value: "8", icon: <Zap className="w-8 h-8" />, color: "from-purple-200 to-violet-300", textColor: "text-violet-700" }
+            { label: "Colleges Connected - Building a united student community across Nagpur.", value: "8+", icon: <BookOpen className="w-8 h-8" />, color: "from-pink-200 to-rose-300", textColor: "text-rose-700" },
+            { label: "Many Social Events - Creating awareness and inspiring positive change in society.", value: "Social Events", icon: <Users className="w-8 h-8" />, color: "from-blue-200 to-sky-300", textColor: "text-sky-700" },
+            { label: "Many Technical Events - Fostering innovation, learning, and skill development.", value: "Technical Events", icon: <Globe className="w-8 h-8" />, color: "from-green-200 to-emerald-300", textColor: "text-emerald-700" },
+            { label: "Every Year - Expanding our reach, impact, and opportunities for students.", value: "Growing", icon: <Zap className="w-8 h-8" />, color: "from-purple-200 to-violet-300", textColor: "text-violet-700" }
           ].map((stat, index) => (
             <div key={index} className={`bg-gradient-to-br ${stat.color} border-2 border-white/60 rounded-3xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 backdrop-blur-sm`}>
               <div className={`${stat.textColor} mb-4 flex justify-center animate-bounce`} style={{ animationDelay: `${index * 0.2}s` }}>
                 {stat.icon}
               </div>
-              <div className={`text-4xl font-black ${stat.textColor} mb-2`}>{stat.value}</div>
+              <div className={`text-2xl font-black ${stat.textColor} mb-2`}>{stat.value}</div>
               <div className={`text-sm ${stat.textColor} font-bold uppercase tracking-wide`}>{stat.label}</div>
             </div>
           ))}
@@ -241,16 +244,16 @@ const CollegesSection = () => {
               <div className="bg-white/60 rounded-2xl p-8 backdrop-blur-sm border border-white/30 shadow-lg hover:shadow-xl transition-all duration-300">
                 <h3 className="text-3xl font-bold text-gray-800 flex items-center justify-center mb-6">
                   <span className="text-4xl mr-4 animate-bounce">🚀</span>
-                  Our Achievements
+                  Our Milestones
                 </h3>
                 <div className="space-y-4">
                   {[
-                    "Encourages creativity and innovation by providing students with opportunities to explore, experiment, and excel in real-world challenges.",
-                    "Helps students unlock their hidden potential by cultivating leadership skills, confidence, and a growth mindset.",
-                    "Promotes an environment of team spirit and collaborative problem-solving through interactive events and technical activities.",
                     "Backed by Vidarbha Vaibhav, a respected organization known for promoting educational excellence and social impact.",
                     "Follows the inspiring path of Swami Vivekananda’s philosophy — “Arise, awake, and stop not till the goal is reached” — motivating students to push boundaries and aim high.",
                     "Builds a strong sense of community, connection, and contribution, encouraging students to create meaningful bonds and impactful projects.",
+                    "Encourages creativity and innovation by providing students with opportunities to explore, experiment, and excel in real-world challenges.",
+                    "Helps students unlock their hidden potential by cultivating leadership skills, confidence, and a growth mindset.",
+                    "Promotes an environment of team spirit and collaborative problem-solving through interactive events and technical activities.",
                   ].map((achievement, index) => (
                     <div key={index} className="flex items-start group">
                       <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mr-4 mt-2 group-hover:animate-ping"></div>
