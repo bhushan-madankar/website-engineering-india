@@ -244,7 +244,7 @@ const CollegesSection = () => {
               <div className="bg-white/60 rounded-2xl p-8 backdrop-blur-sm border border-white/30 shadow-lg hover:shadow-xl transition-all duration-300">
                 <h3 className="text-3xl font-bold text-gray-800 flex items-center justify-center mb-6">
                   <span className="text-4xl mr-4 animate-bounce">🚀</span>
-                  Our Milestones
+                  Milestones Reached
                 </h3>
                 <div className="space-y-4">
                   {[
