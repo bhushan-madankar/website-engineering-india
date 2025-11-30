@@ -59,7 +59,7 @@ const timelineData = [
   { year: "2011", title: "Inception", desc: "Abhyudaya was founded with a vision to foster creativity and cultural exchange among students." },
   { year: "2015", title: "Intercollege Event", desc: "Expanded its reach, welcoming participants from various engineering colleges across Nagpur." },
   { year: "2023", title: "Tech + Cultural Merge", desc: "Integrated technical competitions with cultural events, broadening its scope and appeal." },
-  { year: "2024", title: "Mega Fest", desc: "Achieved a milestone with over 1000 attendees, significant media coverage, and widespread acclaim." },
+  { year: "2024", title: "Mega Fest", desc: "Achieved a milestone with over 2500 attendees, significant media coverage, and widespread acclaim." },
 ];
 
 // Memories data for slideshow
